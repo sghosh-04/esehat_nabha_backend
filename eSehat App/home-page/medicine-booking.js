@@ -37,7 +37,7 @@ const sortFilter = document.getElementById('sortFilter');
 // ===============================
 async function fetchMedicines() {
   try {
-    const res = await fetch("http://localhost:5004/api/medicines/list");
+    const res = await fetch("http://localhost:5004/api/medicines");
     const json = await res.json();
 
     if (!json.success) throw new Error("Failed to fetch medicines");

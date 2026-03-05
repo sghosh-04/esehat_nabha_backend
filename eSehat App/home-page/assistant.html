@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Health Assistant - e-Sehat Nabha</title>
+  <title>AI Health Assistant - e-Sehat</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <!-- <link rel="stylesheet" href="styles.css"> -->
   <link rel="stylesheet" href="assistant.css">
@@ -15,8 +15,8 @@
     <header>
       <div class="container">
         <div class="logo">
-          <h1>e-Sehat Nabha</h1>
-          <span class="govt-tag">Government Healthcare Initiative</span>
+          <h1>e-Sehat</h1>
+          
         </div>
         <nav>
           <ul>
@@ -72,13 +72,26 @@
       <div id="suggestionResult" class="suggestion-result"></div>
     </div>
   </section>
+  <!-- Ambulance Button -->
+    <div class="ambulance-btn" id="ambulanceBtn">
+      <i class="fas fa-ambulance"></i>
+      <span class="ambulance-status">Emergency Ambulance</span>
+    </div>
+
+    <script>
+      document
+        .getElementById("ambulanceBtn")
+        .addEventListener("click", function () {
+          window.location.href = "../home-page/ambulance-booking.html";
+        });
+    </script>
 
   <!-- Footer Section -->
   <footer>
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>e-Sehat Nabha</h3>
+          <h3>e-Sehat</h3>
           <p data-translate="footer_tagline">Your Journey to Better Health Starts Here</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -113,11 +126,11 @@
           <h4 data-translate="contact_us">Contact Us</h4>
           <p><i class="fas fa-map-marker-alt"></i> Medical Complex, Nabha, Punjab</p>
           <p><i class="fas fa-phone"></i> +91 9876543210</p>
-          <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+          <p><i class="fas fa-envelope"></i> info@esehat.com</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 e-Sehat Nabha. All rights reserved. |
+        <p>&copy; 2025 e-Sehat. All rights reserved. |
           <a href="#" data-translate="privacy_policy">Privacy Policy</a> |
           <a href="#" data-translate="terms_service">Terms of Service</a>
         </p>

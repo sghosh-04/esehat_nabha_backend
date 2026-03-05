@@ -150,107 +150,98 @@
                         </div>
                     </section>
 
-                    <!-- Seminar/Camp Schedule Section -->
                     <section class="dashboard-section">
                         <div class="section-header">
                             <h2><i class="fas fa-calendar-alt"></i> Seminar & Camp Schedule</h2>
-                            <button class="btn-add" id="addSeminarBtn"><i class="fas fa-plus"></i> Add New</button>
+                            <button class="btn-add" id="addSeminarBtn">
+                            <i class="fas fa-plus"></i> Add New
+                            </button>
                         </div>
+
                         <div class="section-content">
-                            <div class="schedule-list">
-                                <div class="schedule-item">
-                                    <div class="schedule-date">
-                                        <span class="date-day">25</span>
-                                        <span class="date-month">SEP</span>
-                                    </div>
-                                    <div class="schedule-info">
-                                        <h4>Diabetes Awareness Camp</h4>
-                                        <p>Time: 10:00 AM - 2:00 PM</p>
-                                        <p>Location: Community Health Center</p>
-                                        <span class="schedule-status upcoming">Upcoming</span>
-                                    </div>
-                                </div>
-                                <div class="schedule-item">
-                                    <div class="schedule-date">
-                                        <span class="date-day">28</span>
-                                        <span class="date-month">SEP</span>
-                                    </div>
-                                    <div class="schedule-info">
-                                        <h4>Cardiac Health Seminar</h4>
-                                        <p>Time: 3:00 PM - 5:00 PM</p>
-                                        <p>Location: Municipal Auditorium</p>
-                                        <span class="schedule-status upcoming">Upcoming</span>
-                                    </div>
-                                </div>
-                                <div class="schedule-item">
-                                    <div class="schedule-date past">
-                                        <span class="date-day">20</span>
-                                        <span class="date-month">SEP</span>
-                                    </div>
-                                    <div class="schedule-info">
-                                        <h4>Vaccination Drive</h4>
-                                        <p>Time: 9:00 AM - 4:00 PM</p>
-                                        <p>Location: Primary School Ground</p>
-                                        <span class="schedule-status completed">Completed</span>
-                                    </div>
-                                </div>
+                            <table class="data-table" id="seminarsTable">
+                            <thead>
+                                <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Duration</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            </table>
+
+                            <div style="text-align:center; margin-top:10px;">
+                            <button class="btn-outline" id="loadMoreSeminarsBtn" style="display:none;">
+                                Load More Seminars
+                            </button>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Blood Donation Section -->
+                    <!-- Drone Delivery Section -->
                     <section class="dashboard-section">
                         <div class="section-header">
-                            <h2><i class="fas fa-tint"></i> Blood Donation & Requirements</h2>
-                            <div class="blood-filter">
-                                <button class="filter-btn active" data-filter="all">All</button>
-                                <button class="filter-btn" data-filter="donors">Donors</button>
-                                <button class="filter-btn" data-filter="requirements">Requirements</button>
-                            </div>
+                            <h2><i class="fas fa-helicopter"></i> Drone Medicine Delivery</h2>
                         </div>
                         <div class="section-content">
-                            <div class="blood-list">
-                                <div class="blood-item donor">
-                                    <div class="blood-type">
-                                        <span class="blood-group">O+</span>
-                                    </div>
-                                    <div class="blood-info">
-                                        <h4>Available Donor</h4>
-                                        <p>Rahul Verma - Last Donation: 3 months ago</p>
-                                        <p>Contact: 98765XXXXX</p>
-                                        <span class="blood-status available">Available</span>
-                                    </div>
-                                </div>
-                                <div class="blood-item requirement urgent">
-                                    <div class="blood-type">
-                                        <span class="blood-group">B+</span>
-                                    </div>
-                                    <div class="blood-info">
-                                        <h4>Urgent Requirement</h4>
-                                        <p>Emergency Surgery - Civil Hospital</p>
-                                        <p>Contact: Dr. Sharma - 97654XXXXX</p>
-                                        <span class="blood-status urgent">Urgent</span>
-                                    </div>
-                                </div>
-                                <div class="blood-item donor">
-                                    <div class="blood-type">
-                                        <span class="blood-group">A+</span>
-                                    </div>
-                                    <div class="blood-info">
-                                        <h4>Available Donor</h4>
-                                        <p>Sunita Devi - Regular Donor</p>
-                                        <p>Contact: 96543XXXXX</p>
-                                        <span class="blood-status available">Available</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--<div class="section-footer">
-                                <a href="#" class="view-all-link">View All Records <i class="fas fa-arrow-right"></i></a>
-                            </div>
+                            <p>Coming Soon</p>
                         </div>
                     </section>
+                    
                 </div>
             </div>
+            <!-- </section> Removed stray closing tag from original code -->
+
+            <!-- Blood Donation Section -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tint"></i> Blood Donors</h2>
+                </div>
+                <div class="section-content">
+                    <div class="blood-list">
+                        <div class="blood-item donor">
+                            <div class="blood-type">
+                                <span class="blood-group">O+</span>
+                            </div>
+                            <div class="blood-info">
+                                <h4>Available Donor</h4>
+                                <p>Rahul Verma - Last Donation: 3 months ago</p>
+                                <p>Contact: 98765XXXXX</p>
+                                <span class="blood-status available">Available</span>
+                            </div>
+                        </div>
+                        <div class="blood-item requirement urgent">
+                            <div class="blood-type">
+                                <span class="blood-group">B+</span>
+                            </div>
+                            <div class="blood-info">
+                                <h4>Urgent Requirement</h4>
+                                <p>Emergency Surgery - Civil Hospital</p>
+                                <p>Contact: Dr. Sharma - 97654XXXXX</p>
+                                <span class="blood-status urgent">Urgent</span>
+                            </div>
+                        </div>
+                        <div class="blood-item donor">
+                            <div class="blood-type">
+                                <span class="blood-group">A+</span>
+                            </div>
+                            <div class="blood-info">
+                                <h4>Available Donor</h4>
+                                <p>Sunita Devi - Regular Donor</p>
+                                <p>Contact: 96543XXXXX</p>
+                                <span class="blood-status available">Available</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="section-footer">
+                        <a href="#" class="view-all-link">View All Records <i class="fas fa-arrow-right"></i></a>
+                    </div>-->
+                </div>
+            </section>
         </div>
     </div>
 

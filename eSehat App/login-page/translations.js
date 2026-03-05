@@ -4,7 +4,7 @@
 const translations = {
     en: {
         // App Info
-        "app_name": "e-Sehat Nabha",
+        "app_name": "e-Sehat",
         "app_tagline": "Your Journey to Better Health Starts Here",
         
         // Login Types
@@ -67,7 +67,7 @@ const translations = {
     
     hi: {
         // App Info
-        "app_name": "ई-सिहत नाभा",
+        "app_name": "ई-सिहत",
         "app_tagline": "आपकी बेहतर सेहत की यात्रा यहाँ से शुरू होती है",
         
         // Login Types
@@ -130,7 +130,7 @@ const translations = {
     
     pa: {
         // App Info
-        "app_name": "ਈ-ਸਿਹਤ ਨਾਭਾ",
+        "app_name": "ਈ-ਸਿਹਤ",
         "app_tagline": "ਤੁਹਾਡੀ ਬਿਹਤਰ ਸਿਹਤ ਦੀ ਯਾਤਰਾ ਇੱਥੋਂ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ",
         
         // Login Types

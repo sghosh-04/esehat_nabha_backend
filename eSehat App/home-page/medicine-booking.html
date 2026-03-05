@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Doctors - e-Schat Nabha</title>
+    <title>Our Doctors - e-Sehat</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -11,22 +11,14 @@
     <link rel="stylesheet" href="medicine-booking.css" />
   </head>
   
-  <!-- Ambulance Emergency Button -->
-<a href="../home-page/ambulance-booking.html"
-   id="ambulanceBtn"
-   class="ambulance-btn"
-   title="Emergency Ambulance">
-  <i class="fas fa-ambulance"></i>
-  <span class="ambulance-status">Emergency</span>
-</a>
 
   <body>
     <!-- Header Section -->
     <header>
       <div class="container">
         <div class="logo">
-          <h1>e-Sehat Nabha</h1>
-          <span class="govt-tag">Government Healthcare Initiative</span>
+          <h1>e-Sehat</h1>
+          
         </div>
         <nav>
           <ul>
@@ -295,7 +287,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3 data-translate="site_name">e-Sehat Nabha</h3>
+            <h3 data-translate="site_name">e-Sehat</h3>
             <p data-translate="footer_tagline">Your Journey to Better Health Starts Here</p>
             <div class="social-icons">
               <a href="#"><i class="fab fa-facebook"></i></a>
@@ -331,18 +323,23 @@
               <i class="fas fa-map-marker-alt"></i> <span data-translate="address">Medical Complex, Nabha, Punjab</span>
             </p>
             <p><i class="fas fa-phone"></i> +91 9876543210</p>
-            <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+            <p><i class="fas fa-envelope"></i> info@esehat.com</p>
           </div>
         </div>
 
         <div class="footer-bottom">
           <p>
-            &copy; 2025 <span data-translate="site_name">e-Sehat<br>Nabha</span>. <span data-translate="all_rights_reserved">All rights reserved.</span> |
+            &copy; 2025 <span data-translate="site_name">e-Sehat<br></span>. <span data-translate="all_rights_reserved">All rights reserved.</span> |
             <a href="#" data-translate="privacy_policy">Privacy Policy</a> | <a href="#" data-translate="terms_of_service">Terms of Service</a>
           </p>
         </div>
       </div>
     </footer>
+    <!-- Ambulance Button -->
+    <div class="ambulance-btn" id="ambulanceBtn" onclick="window.location.href='ambulance-booking.html'">
+        <i class="fas fa-ambulance"></i>
+        <span class="ambulance-status">Emergency Ambulance</span>
+    </div>
 
     <!-- Page JS -->
     <script src="medicine-booking.js"></script>

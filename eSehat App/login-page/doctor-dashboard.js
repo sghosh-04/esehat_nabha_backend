@@ -116,7 +116,7 @@ function displayAppointments(appointments) {
 
 // Create HTML element for each appointment
 function createAppointmentElement(appointment) {
-    const status = (appointment.status || 'scheduled').toLowerCase();
+    const status = (appointment.status || 'pending').toLowerCase();
     const appointmentDiv = document.createElement('div');
     appointmentDiv.className = 'appointment-item';
     
@@ -133,21 +133,58 @@ function createAppointmentElement(appointment) {
         hour12: true 
     });
     
+    
+
     appointmentDiv.innerHTML = `
         <div class="appointment-info">
-            <h4 class="patient-name">${appointment.patient_name || 'Patient'}</h4>
+            <h4 class="patient-name">${appointment.patient_name}</h4>
+
+            <p class="visit-reason">
+                <strong>Reason:</strong> ${appointment.symptoms || "Not provided"}
+            </p>
+
             <span class="status ${status}">
-                ${status === 'scheduled' ? 'Scheduled' :
-                status === 'cancelled' ? 'Cancelled' : status}
+                ${
+                    status === 'pending' ? 'Pending Approval' :
+                    status === 'accepted' ? 'Accepted' :
+                    status === 'rejected' ? 'Rejected' :
+                    status === 'cancelled' ? 'Cancelled' :
+                    status
+                }
             </span>
         </div>
+
         <div class="appointment-date">
             <span class="date">${formattedDate}</span>
         </div>
+
         <div class="appointment-time">
             <span class="time">${formattedTime}</span>
         </div>
+
+        <div class="appointment-actions">
+            ${
+                status === 'pending'
+                ? `
+                    <button class="accept-btn" onclick="acceptAppointment(${appointment.id})">
+                    ✅ Accept
+                    </button>
+                    <button class="reject-btn" onclick="rejectAppointment(${appointment.id})">
+                    ❌ Reject
+                    </button>
+                `
+                : `
+                    <button
+                    class="btn btn-secondary"
+                    onclick="openPrescription('${appointment.patient_phone}')"
+                    >
+                    View Prescription
+                    </button>
+                `
+            }
+        </div>
     `;
+
 
     
     return appointmentDiv;
@@ -275,3 +312,132 @@ function handleLogout(e) {
         window.location.href = '../login-page/index.html';
     }
 }
+
+async function uploadProfileImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const token = localStorage.getItem("doctorToken");
+    const doctorId = localStorage.getItem("doctorId");
+
+    if (!token || !doctorId) {
+        alert("Authentication error. Please login again.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+        const res = await fetch(
+            `http://localhost:5004/api/doctors/${doctorId}/upload-profile`,
+            {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                    // ❌ DO NOT set Content-Type for FormData
+                },
+                body: formData
+            }
+        );
+
+        if (!res.ok) {
+            throw new Error("Upload failed");
+        }
+
+        const data = await res.json();
+
+        // 🔥 Update profile image instantly
+        const imageUrl = `http://localhost:5004/uploads/${data.picture_url}`;
+        document.getElementById("doctorProfileImage").src = imageUrl;
+        document.getElementById("doctorProfileImageNav").src = imageUrl;
+
+        alert("✅ Profile picture updated successfully");
+
+    } catch (err) {
+        console.error(err);
+        alert("❌ Image upload failed");
+    }
+}
+function openPrescription(phone) {
+    if (!phone) {
+        alert("Patient phone number not available");
+        return;
+    }
+
+    window.open(
+      `http://localhost:5004/api/users/prescription?phone_number=${phone}`,
+      "_blank"
+    );
+}
+
+
+
+
+async function acceptAppointment(appointmentId) {
+    const token = localStorage.getItem("doctorToken");
+    const doctorId = localStorage.getItem("doctorId");
+
+    if (!token || !doctorId) {
+        alert("Authentication error. Please login again.");
+        return;
+    }
+
+    try {
+        const res = await fetch(
+            `http://localhost:5004/api/appointments/${appointmentId}/accept`,
+            {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    doctor_id: doctorId
+                })
+            }
+        );
+
+        if (!res.ok) throw new Error("Accept failed");
+
+        alert("✅ Appointment accepted");
+        await loadAppointments();
+    } catch (err) {
+        console.error(err);
+        alert("❌ Failed to accept appointment");
+    }
+}
+
+async function rejectAppointment(appointmentId) {
+    const reason = prompt("Reason for rejection:");
+    //if (!reason) return;
+
+    const token = localStorage.getItem("doctorToken");
+    const doctorId = localStorage.getItem("doctorId");
+
+    try {
+        const res = await fetch(
+            `http://localhost:5004/api/appointments/${appointmentId}/reject`,
+            {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    doctor_id: doctorId,
+                    reason
+                })
+            }
+        );
+
+        if (!res.ok) throw new Error("Reject failed");
+
+        alert("❌ Appointment rejected");
+        await loadAppointments();
+    } catch (err) {
+        console.error(err);
+        alert("❌ Failed to reject appointment");
+    }
+}
+

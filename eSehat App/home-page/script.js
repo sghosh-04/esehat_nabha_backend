@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Main Initialization Function
 function initializeApp() {
     initializeMobileMenu();
-    initializeAmbulanceButton(); // Added ambulance button functionality
+    initializeAmbulanceButton(); 
     initializeSmoothScrolling();
     initializeAuthButtons();
     initializeKioskButton();

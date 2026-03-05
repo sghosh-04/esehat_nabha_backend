@@ -3,41 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Doctors - e-Schat Nabha</title>
+    <title>Our Doctors - e-Sehat</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="doctors.css" />
   </head>
-<!-- Ambulance Button -->
-<a href="../home-page/ambulance-booking.html"
-   id="ambulanceBtn"
-   class="ambulance-btn">
-  <i class="fas fa-ambulance"></i>
-  <span class="ambulance-status">Emergency</span>
-</a>
-
-
-<!-- Voice Command Button -->
-<div id="voiceBtn" class="voice-command-btn">
-  <i class="fas fa-microphone"></i>
-  <span class="voice-status">Voice</span>
-</div>
-
   <body>
     <!-- Header Section -->
     <header>
       <div class="container">
         <div class="logo">
-          <h1>e-Sehat Nabha</h1>
-          <span class="govt-tag">Government Healthcare Initiative</span>
+          <h1>e-Sehat</h1>
+          
         </div>
         <nav>
           <ul>
             <li><a href="../home-page/index.html">Home</a></li>
             <li><a href="../home-page/services.html">Services</a></li>
-            <li><a href="../home-page/doctors.html" class="active" >Doctors</a></li>
+            <li><a href="../home-page/doctors.html" class="active">Doctors</a></li>
             <li><a href="../home-page/appointments.html">Appointments</a></li>
             <li><a href="../home-page/assistant.html">AI Assistant</a></li>
             <li><a href="../home-page/medicine-booking.html">Medicine</a></li>
@@ -57,8 +42,7 @@
             <button class="btn-primary" id="signupBtn">
               <a href="../sign-up-page/index.html">Sign Up</a>
             </button>
-
-            <!-- Language Selector (moved here) -->
+            <!-- Language Selector -->
             <div class="language-selector">
               <select id="languageSelect">
                 <option value="en">English</option>
@@ -73,6 +57,7 @@
         </div>
       </div>
     </header>
+
     <!-- Doctors Hero Section -->
     <section class="doctors-hero">
       <div class="container">
@@ -221,8 +206,8 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>e-Schat Nabha</h3>
-            <p>Your Journey to Better Health Starts Here</p>
+            <h3 data-translate="site_name">e-Sehat</h3>
+            <p data-translate="footer_tagline">Your Journey to Better Health Starts Here</p>
             <div class="social-icons">
               <a href="#"><i class="fab fa-facebook"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
@@ -231,78 +216,59 @@
             </div>
           </div>
           <div class="footer-section">
-            <h4 data-translate="quickLinks">Quick Links</h4>
+            <h4 data-translate="services">Services</h4>
             <ul>
-              <li>
-                <a href="../home-page/index.html" data-translate="home">Home</a>
-              </li>
-              <li>
-                <a href="../home-page/services.html" data-translate="services"
-                  >Services</a
-                >
-              </li>
-              <li>
-                <a href="../home-page/doctors.html" data-translate="doctors"
-                  >Doctors</a
-                >
-              </li>
-              <li>
-                <a
-                  href="../home-page/appointments.html"
-                  data-translate="appointments"
-                  >Appointments</a
-                >
-              </li>
-              <li>
-                <a href="../home-page/assistant.html" data-translate="assistant"
-                  >AI Assistant</a
-                >
-              </li>
-              <li>
-                <a
-                  href="../home-page/medicine-booking.html"
-                  data-translate="medicine"
-                  >Medicine</a
-                >
-              </li>
-              <li>
-                <a href="../home-page/contact.html" data-translate="contact"
-                  >Contact</a
-                >
-              </li>
+              <li data-translate="online_consultation">Online Consultation</li>
+              <li data-translate="appointment_booking">Appointment Booking</li>
+              <li data-translate="medicine_delivery">Medicine Delivery</li>
+              <li data-translate="health_records">Health Records</li>
+              <li data-translate="emergency_care">Emergency Care</li>
             </ul>
           </div>
           <div class="footer-section">
-            <h4 data-translate="specialties">Specialties</h4>
+            <h4 data-translate="quick_links">Quick Links</h4>
             <ul>
-              <li><a href="#cardiology">Cardiology</a></li>
-              <li><a href="#neurology">Neurology</a></li>
-              <li><a href="#pediatrics">Pediatrics</a></li>
-              <li><a href="#orthopedics">Orthopedics</a></li>
-              <li><a href="#dermatology">Dermatology</a></li>
+              <li><a href="../home-page/index.html" data-translate="home">Home</a></li>
+              <li><a href="../home-page/services.html" data-translate="services">Services</a></li>
+              <li><a href="../home-page/doctors.html" data-translate="doctors">Doctors</a></li>
+              <li><a href="../home-page/appointments.html" data-translate="appointments">Appointments</a></li>
+              <li><a href="../home-page/medicine-booking.html" data-translate="medicine">Medicine</a></li>
             </ul>
           </div>
           <div class="footer-section">
-            <h4 data-translate="contactUsFooter">Contact Us</h4>
+            <h4 data-translate="contact_us">Contact Us</h4>
             <p>
-              <i class="fas fa-map-marker-alt"></i> Medical Complex, Nabha,
-              Punjab
+              <i class="fas fa-map-marker-alt"></i> <span data-translate="address">Medical Complex, Nabha, Punjab</span>
             </p>
             <p><i class="fas fa-phone"></i> +91 9876543210</p>
-            <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+            <p><i class="fas fa-envelope"></i> info@esehat.com</p>
           </div>
         </div>
         <div class="footer-bottom">
           <p>
-            &copy; 2025 e-Schat Nabha.
-            <span data-translate="allRightsReserved">All rights reserved.</span>
-            | <a href="#" data-translate="privacyPolicy">Privacy Policy</a> |
-            <a href="#" data-translate="termsOfService">Terms of Service</a>
+            &copy; 2025 <span data-translate="site_name">e-Sehat<br></span>. <span data-translate="all_rights_reserved">All rights reserved.</span> |
+            <a href="#" data-translate="privacy_policy">Privacy Policy</a> | <a href="#" data-translate="terms_of_service">Terms of Service</a>
           </p>
         </div>
       </div>
     </footer>
 
+    <!-- Voice Command Button -->
+    <div class="voice-command-btn" id="voiceBtn">
+      <i class="fas fa-microphone"></i>
+      <span class="voice-status">Voice Commands</span>
+    </div>
+
+    <!-- Ambulance Emergency Button -->
+    <a href="../home-page/ambulance-booking.html"
+       id="ambulanceBtn"
+       class="ambulance-btn"
+       title="Emergency Ambulance">
+      <i class="fas fa-ambulance"></i>
+      <span class="ambulance-status">Emergency</span>
+    </a>
+
+    <script src="../home-page/script.js"></script>
     <script src="language.js"></script>
     <script src="doctors.js"></script>
   </body>

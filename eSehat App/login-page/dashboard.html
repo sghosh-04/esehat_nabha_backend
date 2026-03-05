@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Sehat Nabha - User Dashboard</title>
+    <title>e-Sehat - User Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>e-Sehat Nabha</h2>
+                <h2>e-Sehat</h2>
             </div>
             <div class="nav-menu">
                 <a href="#" class="nav-link active">Dashboard</a>
@@ -47,14 +47,14 @@
                 <p>Here's your health dashboard with all your medical information</p>
             </div>
             <div class="header-actions">
-                <button class="seminar-btn">
+                <!--<button class="seminar-btn">
                     <i class="fas fa-users"></i> Join Seminar and Get Discount
-                </button>
+                </button>-->
                 <div class="date-credits">
                     <p id="currentDate"></p>
-                    <button class="credits-btn">
+                    <!--<button class="credits-btn">
                         <i class="fas fa-coins"></i> My Credits
-                    </button>
+                    </button>-->
                 </div>
             </div>
         </div>
@@ -104,6 +104,30 @@
         </div>
 
         
+        <!-- Prescriptions Section -->
+        <div class="user-details-section">
+            <div class="section-header">
+                <h2>Prescriptions</h2>
+            </div>
+
+            <!-- Upload Prescription -->
+            <div class="prescription-upload">
+                <input
+                    type="file"
+                    id="prescriptionFile"
+                    accept=".pdf,.doc,.docx"
+                />
+                <button class="btn btn-primary" id="uploadPrescriptionBtn">
+                    <i class="fas fa-upload"></i> Upload Prescription
+                </button>
+                <p class="upload-hint">Accepted formats: PDF, DOC, DOCX</p>
+            </div>
+
+            <!-- Prescription List -->
+            <div class="prescription-list" id="prescriptionList">
+                <p class="empty-text">No prescriptions uploaded yet.</p>
+            </div>
+        </div>
 
         <!-- Commented Out Other Sections -->
         <!-- 

@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let visibleAmbulanceCount = 3;
     const AMBULANCE_PER_LOAD = 3;
 
+    let allSeminars = [];
+    let visibleSeminarCount = 3;
+    const SEMINARS_PER_LOAD = 3;
+
+
 
     // ------------------ Display Kiosk Information ------------------
     async function displayKioskInfo() {
@@ -640,6 +645,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    //======
+    async function fetchSeminars() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/seminars`);
+            const data = await response.json();
+
+            if (data.success) {
+            allSeminars = data.data.seminars;
+            visibleSeminarCount = SEMINARS_PER_LOAD;
+            renderSeminars();
+            }
+        } catch (error) {
+            console.error("Error fetching seminars:", error);
+        }
+    }
+
+    
+
+
     // ------------------ Modal Elements ------------------
     const seminarModal = document.getElementById('seminarModal');
     const orderModal = document.getElementById('orderModal');
@@ -648,6 +672,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeOrderModal = document.getElementById('closeOrderModal');
     const cancelSeminarBtn = document.getElementById('cancelSeminarBtn');
     const seminarForm = document.getElementById('seminarForm');
+
+    if (seminarForm) {
+    seminarForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const kioskId = localStorage.getItem("kioskId");
+      const adminName =
+        localStorage.getItem("kioskAdmin") ||
+        document.getElementById("kioskName")?.textContent ||
+        "Kiosk Admin";
+
+      const payload = {
+        title: document.getElementById("seminarTitle").value,
+        description: document.getElementById("seminarDescription").value,
+        event_date: document.getElementById("seminarDate").value,
+        start_time: document.getElementById("seminarTime").value,
+        duration_hours: Number(document.getElementById("seminarDuration").value),
+        location: document.getElementById("seminarLocation").value,
+        created_by_kiosk_id: kioskId,
+        created_by_admin: adminName
+      };
+
+      console.log("📤 Sending seminar payload:", payload);
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/seminars`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          alert('Seminar added successfully ✅');
+          seminarForm.reset();
+          seminarModal.classList.remove('active');
+          fetchSeminars();
+        } else {
+          alert('Failed to add seminar ❌');
+        }
+      } catch (error) {
+        console.error('Add seminar error:', error);
+        alert('Server error ❌');
+      }
+    });
+    }
 
     // ------------------ Refresh Buttons ------------------
     function setupRefreshButtons() {
@@ -699,7 +769,8 @@ document.addEventListener('DOMContentLoaded', function() {
         await Promise.all([
             fetchOrders(),
             fetchAmbulanceRequests(),
-            fetchMedicines()
+            fetchMedicines(),
+            fetchSeminars()
         ]);
         
         // Setup refresh buttons
@@ -918,6 +989,94 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 }
 
+async function updateSeminarStatus(seminarId, newStatus) {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/seminars/${seminarId}/status`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus })
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      showNotification("Seminar status updated", "success");
+
+      // 🔥 THIS IS THE KEY FIX
+      await fetchSeminars(); // re-fetch from DB
+    } else {
+      showNotification(data.message || "Update failed", "error");
+    }
+  } catch (error) {
+    console.error("Update seminar status error:", error);
+    showNotification("Server error", "error");
+  }
+}
+
+
+
+function renderSeminars() {
+  const tbody = document.querySelector("#seminarsTable tbody");
+  const loadMoreBtn = document.getElementById("loadMoreSeminarsBtn");
+
+  if (!tbody) return;
+
+  // 🔥 STATUS PRIORITY
+  const statusOrder = {
+    scheduled: 1,
+    completed: 2,
+    cancelled: 3
+  };
+
+  const sorted = [...allSeminars].sort((a, b) => {
+    // 1️⃣ Status order
+    if (statusOrder[a.status] !== statusOrder[b.status]) {
+      return statusOrder[a.status] - statusOrder[b.status];
+    }
+
+    // 2️⃣ Date order (earliest first)
+    return new Date(a.event_date) - new Date(b.event_date);
+  });
+
+  const visible = sorted.slice(0, visibleSeminarCount);
+
+  tbody.innerHTML = visible.map(s => {
+    let actions = "-";
+
+    if (s.status === "scheduled") {
+      actions = `
+        <button class="btn-success btn-sm"
+          onclick="updateSeminarStatus(${s.id}, 'completed')">
+          Complete
+        </button>
+        <button class="btn-danger btn-sm"
+          onclick="updateSeminarStatus(${s.id}, 'cancelled')">
+          Cancel
+        </button>
+      `;
+    }
+
+    return `
+      <tr>
+        <td>${s.title}</td>
+        <td>${new Date(s.event_date).toLocaleDateString()}</td>
+        <td>${s.start_time}</td>
+        <td>${s.duration_hours} hrs</td>
+        <td>${s.location}</td>
+        <td class="status-${s.status}">${s.status}</td>
+        <td>${actions}</td>
+      </tr>
+    `;
+  }).join("");
+
+  loadMoreBtn.style.display =
+    visibleSeminarCount < sorted.length ? "inline-block" : "none";
+}
+
+
 const loadMoreOrdersBtn = document.getElementById('loadMoreOrdersBtn');
 
 if (loadMoreOrdersBtn) {
@@ -937,6 +1096,46 @@ if (loadMoreAmbulanceBtn) {
     });
 }
 
+
+const loadMoreSeminarsBtn = document.getElementById("loadMoreSeminarsBtn");
+
+if (loadMoreSeminarsBtn) {
+  loadMoreSeminarsBtn.addEventListener("click", () => {
+    visibleSeminarCount += SEMINARS_PER_LOAD;
+    renderSeminars();
+  });
+}
+
+
     // Start the dashboard
     initializeDashboard();
 });
+
+// ===== GLOBAL FUNCTIONS FOR INLINE BUTTONS =====
+window.updateSeminarStatus = async function (seminarId, newStatus) {
+  if (!confirm(`Mark seminar as ${newStatus}?`)) return;
+
+  try {
+    const response = await fetch(
+      `http://localhost:5004/api/seminars/${seminarId}/status`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus })
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert("✅ Seminar status updated");
+      window.fetchSeminars(); // refetch
+    } else {
+      alert(data.message || "❌ Failed to update status");
+    }
+  } catch (error) {
+    console.error("Update seminar status error:", error);
+    alert("❌ Server error");
+  }
+};
+window.fetchSeminars = fetchSeminars;

@@ -37,6 +37,10 @@ async function loadUserData() {
 
         // Save to localStorage (for editing)
         localStorage.setItem("userData", JSON.stringify(data));
+        localStorage.setItem("userId", data.id);
+
+        fetchPrescription();
+
     } catch (err) {
         console.error("❌ loading user:", err);
         alert("loading patient details.");
@@ -149,3 +153,87 @@ function toggleMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     hamburger.classList.toggle('active');
 }
+
+// Prescription Upload
+document.getElementById("uploadPrescriptionBtn")
+    ?.addEventListener("click", uploadPrescription);
+
+
+
+
+async function uploadPrescription() {
+    const fileInput = document.getElementById("prescriptionFile");
+    const file = fileInput.files[0];
+    const phone = localStorage.getItem("patientPhone");
+
+    if (!file) {
+        alert("Please select a prescription file");
+        return;
+    }
+
+    if (!phone) {
+        alert("Session expired. Please login again.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("document", file);
+
+    try {
+        const res = await fetch(
+            `http://localhost:5004/api/users/upload-prescription?phone_number=${phone}`,
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        if (!res.ok) throw new Error("Upload failed");
+
+        alert("✅ Prescription uploaded successfully");
+
+        // 🔥 ALWAYS re-fetch from backend
+        fetchPrescription();
+
+        fileInput.value = "";
+    } catch (err) {
+        console.error(err);
+        alert("❌ Failed to upload prescription");
+    }
+}
+
+
+async function fetchPrescription() {
+    const phone = localStorage.getItem("patientPhone");
+    const list = document.getElementById("prescriptionList");
+
+    if (!phone || !list) return;
+
+    try {
+        const res = await fetch(
+            `http://localhost:5004/api/users/prescription?phone_number=${phone}`
+        );
+
+        if (!res.ok) throw new Error("No prescription");
+
+        list.innerHTML = `
+            <div class="prescription-item">
+                <span>Prescription available</span>
+                <a
+                  class="btn btn-secondary"
+                  href="http://localhost:5004/api/users/prescription?phone_number=${phone}"
+                  target="_blank"
+                >
+                  View / Download
+                </a>
+            </div>
+        `;
+    } catch {
+        list.innerHTML = `<p class="empty-text">No prescriptions uploaded yet.</p>`;
+    }
+}
+
+
+
+
+

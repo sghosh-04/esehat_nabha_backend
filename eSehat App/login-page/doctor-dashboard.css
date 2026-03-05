@@ -761,3 +761,44 @@ body {
     background: #3a56a5;
 }
 
+.status {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status.pending { background: #fff3cd; color: #856404; }
+.status.accepted { background: #d4edda; color: #155724; }
+.status.rejected { background: #f8d7da; color: #721c24; }
+.status.cancelled { background: #e2e3e5; color: #6c757d; }
+
+.appointment-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.accept-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.visit-reason {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+

@@ -634,3 +634,49 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* Prescriptions Section */
+.prescription-upload {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.prescription-upload input[type="file"] {
+    flex: 1;
+}
+
+.upload-hint {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.prescription-list {
+    margin-top: 1rem;
+}
+
+.prescription-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+}
+
+.prescription-item span {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.prescription-item button {
+    font-size: 0.85rem;
+}
+
+.empty-text {
+    color: #95a5a6;
+    font-style: italic;
+}

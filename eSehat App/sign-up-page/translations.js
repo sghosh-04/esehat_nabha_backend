@@ -2,7 +2,7 @@
 const translations = {
     en: {
         // App & Page
-        "app_title": "e-Sehat Nabha",
+        "app_title": "e-Sehat",
         "create_account": "Create Your Account",
         "already_have_account": "Already have an account?",
         "log_in": "Log In",
@@ -159,7 +159,7 @@ const translations = {
     },
     
     hi: {
-        "app_title": "ई-स्वस्थ नाभा",
+        "app_title": "ई-स्वस्थ",
         "create_account": "अपना खाता बनाएं",
         "already_have_account": "पहले से ही एक खाता है?",
         "log_in": "लॉग इन",
@@ -189,7 +189,7 @@ const translations = {
     },
     
     pa: {
-        "app_title": "ਈ-ਸਿਹਤ ਨਾਭਾ",
+        "app_title": "ਈ-ਸਿਹਤ",
         "create_account": "ਆਪਣਾ ਖਾਤਾ ਬਣਾਓ",
         "already_have_account": "ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਖਾਤਾ ਹੈ?",
         "log_in": "ਲਾਗ ਇਨ",
