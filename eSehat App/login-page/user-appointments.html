@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>e-Sehat Nabha - Appointments</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="user-appointments.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h2>e-Sehat Nabha</h2>
+      </div>
+      <div class="nav-menu">
+        <a href="../login-page/dashboard.html" class="nav-link">Dashboard</a>
+        <a href="#" class="nav-link active">Appointments</a>
+        <a href="../login-page/orders.html" class="nav-link">Orders</a>
+
+        <div class="user-profile">
+            <img id="userAvatar" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM0ZTU0YzgiLz4KPHN2ZyB4PSIxMCIgeT0iMTAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEwIDEwQzEyLjIwOTEgMTAgMTQgOC4yMDkxNCAxNCA2QzE0IDMuNzkwODYgMTIuMjA5MSAyIDEwIDJDNy43OTA4NiAyIDYgMy43OTA4NiA2IDZDNiA4LjIwOTE0IDcuNzkwODYgMTAgMTAgMTBaTTEwIDEyQzYuNjcgMTIgMiAxMy4zNCAyIDE2LjY3VjE4SDE4VjE2LjY3QzE4IDEzLjM0IDEzLjMzIDEyIDEwIDEyWiIvPjwvc3ZnPgo8L3N2Zz4K" alt="User Profile">
+            <span class="userName">John Doe</span> <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-menu">
+              <span class="userName">John Doe</span>
+              <span class="userEmail">john.doe@example.com</span>
+              <a href="#" class="dropdown-item" onclick="viewProfile()"><i class="fas fa-user"></i> My Profile</a>
+              <a href="#" class="dropdown-item" onclick="changePassword()"><i class="fas fa-lock"></i> Change Password</a>
+              <a href="../home-page/index.html" class="dropdown-item logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+      </div>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="appointments-container">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+      <div class="welcome-text">
+        <h1>Appointment Management</h1>
+        <p>Book new appointments and manage your existing ones</p>
+      </div>
+      <div class="date-section">
+        <p id="currentDate"></p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+      <button class="tab-btn active" data-tab="booked-appointments">Booked Appointments</button>
+      <button class="tab-btn" data-tab="new-appointment">Book New Appointment</button>
+    </div>
+
+    <!-- Booked Appointments -->
+    <section id="booked-appointments" class="tab-content active">
+      <div class="section-header">
+        <h2>Your Appointments</h2>
+        <div class="filter-options">
+          <select id="appointmentFilter">
+            <option value="all">All Appointments</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="appointments-list" id="appointmentsList">
+        <!-- Appointments will be dynamically added here -->
+        <div class="no-appointments">
+          <i class="fas fa-calendar-check"></i>
+          <p>No appointments found</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Appointment -->
+    <section id="new-appointment" class="tab-content">
+      <div class="section-header">
+        <h2>Book New Appointment</h2>
+      </div>
+
+      <div class="booking-form-container">
+        <form id="appointmentForm" class="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="department">Department</label>
+              <select id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="general">General Medicine</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="doctor">Doctor</label>
+              <select id="doctor" name="doctor" required disabled>
+                <option value="">Select Doctor</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="appointmentDate">Date</label>
+              <input type="date" id="appointmentDate" name="appointmentDate" required min="">
+            </div>
+            <div class="form-group">
+              <label for="appointmentTime">Time</label>
+              <select id="appointmentTime" name="appointmentTime" required disabled>
+                <option value="">Select Time</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="reason">Reason for Visit</label>
+            <textarea id="reason" name="reason" placeholder="Briefly describe your symptoms or reason for appointment" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Book Appointment</button>
+            <button type="button" class="btn-outline" id="resetForm">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-icon success">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3>Appointment Booked Successfully!</h3>
+      <p>Your appointment has been scheduled. You will receive a confirmation email shortly.</p>
+      <button class="btn-primary" id="modalOk">OK</button>
+    </div>
+  </div>
+
+  <!-- Logout Confirmation Modal -->
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-icon warning">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3>Confirm Logout</h3>
+      <p>Are you sure you want to logout from your account?</p>
+      <div class="modal-actions">
+        <button class="btn-outline" id="cancelLogout">Cancel</button>
+        <button class="btn-primary" id="confirmLogout">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="user-appointments.js"></script>
+</body>
+</html>

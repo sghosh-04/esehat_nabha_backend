@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Doctors - e-Sehat Nabha</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="services.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>e-Sehat Nabha</h1>
+          <span class="govt-tag">Government Healthcare Initiative</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../home-page/index.html">Home</a></li>
+            <li><a href="../home-page/services.html" class="active">Services</a></li>
+            <li><a href="../home-page/doctors.html">Doctors</a></li>
+            <li><a href="../home-page/appointments.html">Appointments</a></li>
+            <li><a href="../home-page/assistant.html">AI Assistant</a></li>
+            <li><a href="../home-page/medicine-booking.html">Medicine</a></li>
+            <li><a href="../home-page/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="auth-buttons">
+            <button class="btn-kiosk" id="kioskBtn">
+              <a href="../home-page/kiosk-registration.html"
+                >Kiosk Registration</a
+              >
+            </button>
+            <button class="btn-outline" id="loginBtn">
+              <a href="../login-page/index.html">Login</a>
+            </button>
+            <button class="btn-primary" id="signupBtn">
+              <a href="../sign-up-page/index.html">Sign Up</a>
+            </button>
+
+            <!-- Language Selector (moved here) -->
+            <div class="language-selector">
+              <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="pa">ਪੰਜਾਬੀ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-translate="services_hero_title">Our Healthcare Services</h1>
+                <p data-translate="services_hero_desc">Comprehensive medical care designed to meet all your health needs. <strong data-translate="all_services_free">All services are completely free</strong> as part of our government healthcare initiative.</p>
+                <div class="free-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span data-translate="free_services">All Services Free of Cost</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section class="services-grid-section">
+        <div class="container">
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded dynamically from JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-translate="cta_title">Access Free Healthcare Services</h2>
+            <p data-translate="cta_desc">As a government healthcare initiative, all our services are completely free for all citizens</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" data-translate="book_appointment">Book an Appointment</button>
+                <button class="btn-outline" data-translate="contact_us">Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-translate="app_name">e-Sehat Nabha</h3>
+                    <p data-translate="govt_initiative">Government Healthcare Initiative</p>
+                    <p class="free-services-note"><i class="fas fa-check-circle"></i> <span data-translate="free_services">All Services Free of Cost</span></p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="quick_links">Quick Links</h4>
+                    <ul>
+                        <li><a href="../home-page/index.html" data-translate="home">Home</a></li>
+                        <li><a href="../home-page/services.html" data-translate="services">Services</a></li>
+                        <li><a href="../home-page/doctors.html" data-translate="doctors">Doctors</a></li>
+                        <li><a href="../home-page/appointments.html" data-translate="appointments">Appointments</a></li>
+                        <li><a href="../home-page/assistant.html" data-translate="ai_assistant">AI Assistant</a></li>
+                        <li><a href="../home-page/medicine-booking.html" data-translate="medicine">Medicine</a></li>
+                        <li><a href="../home-page/contact.html" data-translate="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="services">Services</h4>
+                    <ul>
+                        <li><a href="#online-consultation" data-translate="online_consultation">Online Consultation</a></li>
+                        <li><a href="#appointment-booking" data-translate="appointment_booking">Appointment Booking</a></li>
+                        <li><a href="#medicine-delivery" data-translate="medicine_delivery">Medicine Delivery</a></li>
+                        <li><a href="#health-records" data-translate="health_records">Health Records</a></li>
+                        <li><a href="#emergency-care" data-translate="emergency_care">Emergency Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="contact_us">Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-translate="address">Medical Complex, Nabha, Punjab</span></p>
+                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                    <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 e-Sehat Nabha. <span data-translate="all_rights">All rights reserved.</span> | 
+                <a href="#" data-translate="privacy_policy">Privacy Policy</a> | 
+                <a href="#" data-translate="terms_service">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations-services.js"></script>
+    <script src="services.js"></script>
+    <!-- Ambulance Button -->
+    <div class="ambulance-btn" id="ambulanceBtn" onclick="window.location.href='ambulance-booking.html'">
+        <i class="fas fa-ambulance"></i>
+        <span class="ambulance-status">Emergency Ambulance</span>
+    </div>
+
+    <script src="language.js"></script>
+    <script src="doctors.js"></script>
+</body>
+</html>

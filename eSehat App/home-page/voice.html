@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voice Command Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align:center; margin-top: 50px; }
+    #status { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Voice Command Website</h1>
+  <button id="start">🎙 Start Listening</button>
+  <p id="status">Click "Start Listening" and say: "Go home", "Show profile", "Scroll down".</p>
+
+  <script>
+    const startBtn = document.getElementById('start');
+    const statusEl = document.getElementById('status');
+
+    // Support prefix (Chrome uses webkit)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+
+    recognition.onresult = (event) => {
+      const text = event.results[0][0].transcript.toLowerCase();
+    statusEl.textContent = Heard; "${text}";
+      
+    if (text.includes("home")) window.location.href = "/home";
+    else if (text.includes("profile")) window.location.href = "/profile";
+    else if (text.includes("scroll down")) window.scrollBy(0, 400);
+    else statusEl.textContent = `Unknown command: "${text}"`;
+    };
+
+    recognition.onerror = (e) => statusEl.textContent = "Error: " + e.error;
+    recognition.onend = () => statusEl.textContent += " (Stopped)";
+
+    startBtn.onclick = () => {
+      recognition.start();
+      statusEl.textContent = "Listening...";
+    };
+  </script>
+</body>
+</html>

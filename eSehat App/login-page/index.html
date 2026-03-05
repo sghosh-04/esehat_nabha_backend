@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Schat Nabha - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        </select>
+    </div>
+
+    <!-- Voice Command Button -->
+    <div class="voice-control">
+        <button id="voiceBtn" class="voice-btn">
+            <i class="fas fa-microphone"></i>
+        </button>
+        <div id="voiceStatus" class="voice-status">Click to start voice command</div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 data-translate="app_name">e-Sehat Nabha</h1>
+            <p data-translate="app_tagline">Your Journey to Better Health Starts Here</p>
+        </div>
+        
+        <!-- View Toggle Section -->
+        <div class="view-toggle-container">
+            <div class="view-toggle">
+                <div class="toggle-option patient-option active">
+                    <i class="fas fa-user-injured"></i>
+                    <span data-translate="patient_login">Patient Login</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="viewToggle">
+                    <span class="slider round"></span>
+                </label>
+                <div class="toggle-option doctor-option">
+                    <i class="fas fa-user-md"></i>
+                    <span data-translate="doctor_login">Doctor Login</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Patient Login Form -->
+        <div class="form-container patient-form active">
+            <!-- Mobile Input Section -->
+            <div class="input-section mobile-section active">
+                <div class="input-group">
+                    <label for="mobile" data-translate="mobile_number">Mobile Number</label>
+                    <div class="input-field">
+                        <i class="fas fa-mobile-alt"></i>
+                        <input type="tel" id="mobile" placeholder="Enter 10-digit phone number" maxlength="10">
+                    </div>
+                </div>
+                
+                <button class="btn" id="sendOtpBtn" data-translate="send_otp">Send OTP</button>
+                
+                <div class="divider">
+                    <span></span>
+                    <p data-translate="or">OR</p>
+                    <span></span>
+                </div>
+                
+                <div class="footer">
+                    <span data-translate="no_account">Don't have an account?</span> 
+                    <a href="../sign-up-page/index.html" data-translate="signup_patient">Sign Up as Patient</a>
+                </div>
+                
+                <div class="terms">
+                    <span data-translate="agree_terms">By continuing you agree to our</span> 
+                    <a href="#" data-translate="terms">Terms of Service</a> 
+                    <span data-translate="and">and</span> 
+                    <a href="#" data-translate="privacy">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <!-- OTP Verification Section -->
+            <div class="input-section otp-section">
+                <div class="back-button" id="backToMobile">
+                    <i class="fas fa-arrow-left"></i> 
+                    <span data-translate="back">Back</span>
+                </div>
+                
+                <div class="otp-header">
+                    <h3 data-translate="enter_verification">Enter Verification Code</h3>
+                    <p data-translate="otp_sent">We've sent a 6-digit code to</p>
+                    <span id="mobileNumberDisplay"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="otp" data-translate="verification_code">Verification Code</label>
+                    <div class="input-field">
+                        <i class="fas fa-key"></i>
+                        <input type="text" id="otp" placeholder="Enter 6-digit code" maxlength="6">
+                    </div>
+                </div>
+                
+                <div class="resend-otp">
+                    <p>
+                        <span data-translate="no_code">Didn't receive the code?</span> 
+                        <a href="#" id="resendOtp" data-translate="resend_code">Resend code</a>
+                    </p>
+                    <div class="countdown" id="countdown">01:00</div>
+                </div>
+                
+                <button class="btn" id="verifyOtpBtn" data-translate="verify_login">Verify & Login</button>
+            </div>
+        </div>
+        
+        <!-- Doctor Login Form -->
+        <div class="form-container doctor-form">
+            <div class="input-group">
+                <label for="doctorId" data-translate="doctor_id">Doctor ID</label>
+                <div class="input-field">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" id="doctorId" placeholder="Enter your doctor ID">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="password" data-translate="password">Password</label>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter your password">
+                    <i class="fas fa-eye toggle-password"></i>
+                </div>
+            </div>
+            
+            <div class="remember-forgot">
+                <label class="remember">
+                    <input type="checkbox" id="remember">
+                    <span class="checkmark"></span>
+                    <span data-translate="remember_me">Remember me</span>
+                </label>
+                <a href="#" class="forgot" data-translate="forgot_password">Forgot Password?</a>
+            </div>
+            
+            <button class="btn" id="doctorLoginBtn" data-translate="login">Login</button>
+            
+            <div class="footer">
+                <span data-translate="no_account_doctor">Don't have an account?</span> 
+                <a href="../sign-up-page/index.html" data-translate="register_doctor">Register as Doctor</a>
+            </div>
+            
+            <div class="terms">
+                <span data-translate="agree_terms">By continuing you agree to our</span> 
+                <a href="#" data-translate="terms">Terms of Service</a> 
+                <span data-translate="and">and</span> 
+                <a href="#" data-translate="privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="reset_password">Reset Password</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description" data-translate="reset_description">Enter your details to reset your password</p>
+                
+                <div class="input-group">
+                    <label for="doctorEmail" data-translate="email_address">Email Address</label>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="doctorEmail" placeholder="Enter your registered email">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="doctorIdForgot" data-translate="doctor_id">Doctor ID</label>
+                    <div class="input-field">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="doctorIdForgot" placeholder="Enter your doctor ID">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="newPassword" data-translate="new_password">New Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-progress"></div>
+                        </div>
+                        <div class="strength-text">
+                            <span data-translate="password_strength">Password strength:</span> 
+                            <span id="strengthValue">None</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirmPassword" data-translate="confirm_password">Confirm Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your new password">
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                    <div id="passwordMatch" class="password-match"></div>
+                </div>
+                
+                <button class="btn" id="resetPasswordBtn" data-translate="reset_password_btn">Reset Password</button>
+            </div>
+        </div>
+    </div>
+     
+    <!-- Voice Command Help Modal -->
+    <div class="modal" id="voiceHelpModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="voice_commands">Voice Commands Guide</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="voice-commands">
+                    <h3 data-translate="available_commands">Available Commands:</h3>
+                    <ul>
+                        <li><strong>"Enter mobile number [number]"</strong> - <span data-translate="cmd_mobile">Enter phone number</span></li>
+                        <li><strong>"Send OTP"</strong> - <span data-translate="cmd_send_otp">Send verification code</span></li>
+                        <li><strong>"Enter OTP [code]"</strong> - <span data-translate="cmd_enter_otp">Enter 6-digit OTP</span></li>
+                        <li><strong>"Verify OTP"</strong> - <span data-translate="cmd_verify_otp">Verify and login</span></li>
+                        <li><strong>"Switch to doctor login"</strong> - <span data-translate="cmd_switch_doctor">Change to doctor mode</span></li>
+                        <li><strong>"Switch to patient login"</strong> - <span data-translate="cmd_switch_patient">Change to patient mode</span></li>
+                        <li><strong>"Enter doctor ID [ID]"</strong> - <span data-translate="cmd_doctor_id">Enter doctor ID</span></li>
+                        <li><strong>"Enter password [password]"</strong> - <span data-translate="cmd_password">Enter password</span></li>
+                        <li><strong>"Login"</strong> - <span data-translate="cmd_login">Submit login form</span></li>
+                        <li><strong>"Back"</strong> - <span data-translate="cmd_back">Go back to previous step</span></li>
+                        <li><strong>"Help"</strong> - <span data-translate="cmd_help">Show this help dialog</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

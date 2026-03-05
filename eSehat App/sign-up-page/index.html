@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - e-Sehat Nabha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+        </select>
+    </div>
+
+    <!-- Voice Control Button -->
+    <div class="voice-control">
+        <button id="voiceBtn" class="voice-btn">
+            <i class="fas fa-microphone"></i>
+        </button>
+        <div id="voiceStatus" class="voice-status" data-i18n="voice_click_to_start">Click to start voice command</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 data-i18n="app_title">e-Sehat Nabha</h1>
+            <p data-i18n="create_account">Create Your Account</p>
+        </div>
+        
+        <!-- View Toggle Section -->
+        <div class="view-toggle-container">
+            <div class="view-toggle">
+                <div class="toggle-option patient-option active">
+                    <i class="fas fa-user-injured"></i>
+                    <span data-i18n="patient_signup">Patient Sign Up</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="viewToggle">
+                    <span class="slider round"></span>
+                </label>
+                <div class="toggle-option doctor-option">
+                    <i class="fas fa-user-md"></i>
+                    <span data-i18n="doctor_signup">Doctor Sign Up</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Patient Sign Up Form -->
+        <form class="signup-form patient-form active" id="patientForm">
+            <div class="form-section">
+                <h3 data-i18n="personal_info">Personal Information</h3>
+                
+                <div class="input-group">
+                    <label for="fullName" data-i18n="full_name">Full Name</label>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullName" name="fullName" data-i18n-placeholder="enter_full_name" required>
+                    </div>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email" data-i18n="email_address">Email Address</label>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" data-i18n-placeholder="enter_email" required>
+                    </div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="mobile" data-i18n="mobile_number">Mobile Number</label>
+                    <div class="input-field">
+                        <i class="fas fa-mobile-alt"></i>
+                        <input type="tel" id="mobile" name="mobile" data-i18n-placeholder="enter_phone_number" maxlength="10" required>
+                    </div>
+                    <span class="error-message" id="mobileError"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="dob" data-i18n="date_of_birth">Date of Birth</label>
+                    <div class="input-field">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <span class="error-message" id="dobError"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="gender" data-i18n="gender">Gender</label>
+                    <div class="input-field">
+                        <i class="fas fa-venus-mars"></i>
+                        <select id="gender" name="gender" required>
+                            <option value="" data-i18n="select_gender">Select Gender</option>
+                            <option value="Male" data-i18n="male">Male</option>
+                            <option value="Female" data-i18n="female">Female</option>
+                            <option value="Other" data-i18n="other">Other</option>
+                        </select>
+                    </div>
+                    <span class="error-message" id="genderError"></span>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3 data-i18n="account_security">Account Security</h3>
+                
+                <div class="input-group">
+                    <label for="password" data-i18n="password">Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" data-i18n-placeholder="create_password" required>
+                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text" data-i18n="password_strength">Password strength</span>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirmPassword" data-i18n="confirm_password">Confirm Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" data-i18n-placeholder="confirm_password" required>
+                        <i class="fas fa-eye toggle-password" id="toggleConfirmPassword"></i>
+                    </div>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3 data-i18n="additional_info">Additional Information</h3>
+                
+                <div class="input-group">
+                    <label for="address" data-i18n="address">Address</label>
+                    <div class="input-field">
+                        <i class="fas fa-home"></i>
+                        <input type="text" id="address" name="address" data-i18n-placeholder="enter_address">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="city" data-i18n="city">City</label>
+                    <div class="input-field">
+                        <i class="fas fa-city"></i>
+                        <input type="text" id="city" name="city" data-i18n-placeholder="enter_city">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="pincode" data-i18n="pincode">Pincode</label>
+                    <div class="input-field">
+                        <i class="fas fa-map-pin"></i>
+                        <input type="text" id="pincode" name="pincode" data-i18n-placeholder="enter_pincode" maxlength="6">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terms-group">
+                <input type="checkbox" id="patientTerms" name="terms" required>
+                <label for="patientTerms" data-i18n="agree_terms">I agree to the <a href="#" data-i18n="terms_of_service">Terms of Service</a> and <a href="#" data-i18n="privacy_policy">Privacy Policy</a></label>
+                <span class="error-message" id="termsError"></span>
+            </div>
+            
+            <button type="submit" class="btn" id="patientSignupBtn" data-i18n="create_patient_account">Create Patient Account</button>
+            
+            <div class="login-link">
+                <span data-i18n="already_have_account">Already have an account?</span> <a href="../login-page/index.html" data-i18n="log_in">Log In</a>
+            </div>
+        </form>
+        
+        <!-- Doctor Sign Up Form -->
+        <form class="signup-form doctor-form" id="doctorForm">
+            <div class="form-section">
+                <h3 data-i18n="professional_info">Professional Information</h3>
+
+                <div class="input-group">
+                    <label for="doctorName" data-i18n="full_name">Full Name</label>
+                    <div class="input-field">
+                        <i class="fas fa-user-md"></i>
+                        <input type="text" id="doctorName" name="name" data-i18n-placeholder="enter_full_name" required>
+                    </div>
+                    <span class="error-message" id="doctorNameError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="doctorEmail" data-i18n="email_address">Email Address</label>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="doctorEmail" name="email" data-i18n-placeholder="enter_professional_email" required>
+                    </div>
+                    <span class="error-message" id="doctorEmailError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="doctorPhone" data-i18n="mobile_number">Mobile Number</label>
+                    <div class="input-field">
+                        <i class="fas fa-mobile-alt"></i>
+                        <input type="tel" id="doctorPhone" name="phonenumber" data-i18n-placeholder="enter_phone_number" maxlength="10" required>
+                    </div>
+                    <span class="error-message" id="doctorPhoneError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="specialization" data-i18n="specialization">Specialization</label>
+                    <div class="input-field">
+                        <i class="fas fa-stethoscope"></i>
+                        <select id="specialization" name="specialization" required>
+                            <option value="" data-i18n="select_specialization">Select Specialization</option>
+                            <option value="cardiology" data-i18n="cardiology">Cardiology</option>
+                            <option value="neurology" data-i18n="neurology">Neurology</option>
+                            <option value="pediatrics" data-i18n="pediatrics">Pediatrics</option>
+                            <option value="orthopedics" data-i18n="orthopedics">Orthopedics</option>
+                            <option value="dermatology" data-i18n="dermatology">Dermatology</option>
+                            <option value="gynecology" data-i18n="gynecology">Gynecology</option>
+                            <option value="general" data-i18n="general_medicine">General Medicine</option>
+                            <option value="other" data-i18n="other">Other</option>
+                        </select>
+                    </div>
+                    <span class="error-message" id="specializationError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="qualifications" data-i18n="qualifications">Qualifications</label>
+                    <div class="input-field">
+                        <i class="fas fa-graduation-cap"></i>
+                        <input type="text" id="qualifications" name="qualifications" data-i18n-placeholder="enter_qualifications" required>
+                    </div>
+                    <span class="error-message" id="qualificationError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="license_number" data-i18n="license_number">Medical License Number</label>
+                    <div class="input-field">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="license_number" name="license_number" data-i18n-placeholder="enter_license_number" required>
+                    </div>
+                    <span class="error-message" id="licenseError"></span>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 data-i18n="account_security">Account Security</h3>
+
+                <div class="input-group">
+                    <label for="doctorPassword" data-i18n="password">Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="doctorPassword" name="password" data-i18n-placeholder="create_password" required>
+                        <i class="fas fa-eye toggle-password" id="toggleDoctorPassword"></i>
+                    </div>
+                    <div class="password-strength" id="doctorPasswordStrength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text" data-i18n="password_strength">Password strength</span>
+                    </div>
+                    <span class="error-message" id="doctorPasswordError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmDoctorPassword" data-i18n="confirm_password">Confirm Password</label>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmDoctorPassword" name="confirmPassword" data-i18n-placeholder="confirm_password" required>
+                        <i class="fas fa-eye toggle-password" id="toggleConfirmDoctorPassword"></i>
+                    </div>
+                    <span class="error-message" id="confirmDoctorPasswordError"></span>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 data-i18n="clinic_info">Clinic Information</h3>
+
+                <div class="input-group">
+                    <label for="clinic_name" data-i18n="clinic_name">Clinic/Hospital Name</label>
+                    <div class="input-field">
+                        <i class="fas fa-hospital"></i>
+                        <input type="text" id="clinic_name" name="clinic_name" data-i18n-placeholder="enter_clinic_name">
+                    </div>
+                    <span class="error-message" id="clinicError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="clinic_address" data-i18n="clinic_address">Clinic Address</label>
+                    <div class="input-field">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="clinic_address" name="clinic_address" data-i18n-placeholder="enter_clinic_address">
+                    </div>
+                    <span class="error-message" id="clinicAddressError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="experience" data-i18n="experience">Years of Experience</label>
+                    <div class="input-field">
+                        <i class="fas fa-briefcase"></i>
+                        <input type="number" id="experience" name="experience" data-i18n-placeholder="enter_experience" min="0" max="50">
+                    </div>
+                    <span class="error-message" id="experienceError"></span>
+                </div>
+            </div>
+
+            <div class="terms-group">
+                <input type="checkbox" id="doctorTerms" name="doctorTerms" required>
+                <label for="doctorTerms" data-i18n="agree_terms">I agree to the <a href="#" data-i18n="terms_of_service">Terms of Service</a> and <a href="#" data-i18n="privacy_policy">Privacy Policy</a></label>
+                <span class="error-message" id="doctorTermsError"></span>
+            </div>
+
+            <button type="submit" class="btn" id="doctorSignupBtn" data-i18n="create_doctor_account">Create Doctor Account</button>
+
+            <div class="login-link">
+                <span data-i18n="already_have_account">Already have an account?</span> <a href="../login-page/index.html" data-i18n="log_in">Log In</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Voice Commands Help Modal -->
+    <div id="voiceHelpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="voice_commands_guide">Voice Commands Guide</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="voice-commands">
+                    <h3 data-i18n="available_commands">Available Voice Commands:</h3>
+                    
+                    <h4 data-i18n="form_navigation">Form Navigation:</h4>
+                    <ul>
+                        <li><strong data-i18n="command_switch_patient">"Switch to patient sign up"</strong> - <span data-i18n="desc_switch_patient">Switch to patient form</span></li>
+                        <li><strong data-i18n="command_switch_doctor">"Switch to doctor sign up"</strong> - <span data-i18n="desc_switch_doctor">Switch to doctor form</span></li>
+                        <li><strong data-i18n="command_next_field">"Next field"</strong> - <span data-i18n="desc_next_field">Move to next input field</span></li>
+                        <li><strong data-i18n="command_previous_field">"Previous field"</strong> - <span data-i18n="desc_previous_field">Move to previous input field</span></li>
+                    </ul>
+                    
+                    <h4 data-i18n="patient_commands">Patient Form Commands:</h4>
+                    <ul>
+                        <li><strong data-i18n="command_enter_name">"Enter full name [name]"</strong> - <span data-i18n="desc_enter_name">Enter full name</span></li>
+                        <li><strong data-i18n="command_enter_email">"Enter email [email]"</strong> - <span data-i18n="desc_enter_email">Enter email address</span></li>
+                        <li><strong data-i18n="command_enter_mobile">"Enter mobile number [number]"</strong> - <span data-i18n="desc_enter_mobile">Enter phone number</span></li>
+                        <li><strong data-i18n="command_enter_dob">"Enter date of birth [date]"</strong> - <span data-i18n="desc_enter_dob">Enter birth date</span></li>
+                        <li><strong data-i18n="command_select_gender">"Select gender [male/female/other]"</strong> - <span data-i18n="desc_select_gender">Select gender</span></li>
+                        <li><strong data-i18n="command_enter_password">"Enter password [password]"</strong> - <span data-i18n="desc_enter_password">Enter password</span></li>
+                        <li><strong data-i18n="command_enter_address">"Enter address [address]"</strong> - <span data-i18n="desc_enter_address">Enter address</span></li>
+                        <li><strong data-i18n="command_enter_city">"Enter city [city]"</strong> - <span data-i18n="desc_enter_city">Enter city</span></li>
+                        <li><strong data-i18n="command_enter_pincode">"Enter pincode [code]"</strong> - <span data-i18n="desc_enter_pincode">Enter pincode</span></li>
+                    </ul>
+                    
+                    <h4 data-i18n="doctor_commands">Doctor Form Commands:</h4>
+                    <ul>
+                        <li><strong data-i18n="command_enter_doctor_name">"Enter doctor name [name]"</strong> - <span data-i18n="desc_enter_doctor_name">Enter doctor name</span></li>
+                        <li><strong data-i18n="command_enter_doctor_email">"Enter doctor email [email]"</strong> - <span data-i18n="desc_enter_doctor_email">Enter professional email</span></li>
+                        <li><strong data-i18n="command_enter_doctor_phone">"Enter doctor phone [number]"</strong> - <span data-i18n="desc_enter_doctor_phone">Enter doctor phone</span></li>
+                        <li><strong data-i18n="command_select_specialization">"Select specialization [specialization]"</strong> - <span data-i18n="desc_select_specialization">Choose specialization</span></li>
+                        <li><strong data-i18n="command_enter_qualifications">"Enter qualifications [qualifications]"</strong> - <span data-i18n="desc_enter_qualifications">Enter qualifications</span></li>
+                        <li><strong data-i18n="command_enter_license">"Enter license number [number]"</strong> - <span data-i18n="desc_enter_license">Enter license number</span></li>
+                        <li><strong data-i18n="command_enter_clinic_name">"Enter clinic name [name]"</strong> - <span data-i18n="desc_enter_clinic_name">Enter clinic name</span></li>
+                        <li><strong data-i18n="command_enter_clinic_address">"Enter clinic address [address]"</strong> - <span data-i18n="desc_enter_clinic_address">Enter clinic address</span></li>
+                        <li><strong data-i18n="command_enter_experience">"Enter experience [years]"</strong> - <span data-i18n="desc_enter_experience">Enter years of experience</span></li>
+                    </ul>
+                    
+                    <h4 data-i18n="general_commands">General Commands:</h4>
+                    <ul>
+                        <li><strong data-i18n="command_submit">"Submit form"</strong> - <span data-i18n="desc_submit">Submit the current form</span></li>
+                        <li><strong data-i18n="command_clear">"Clear form"</strong> - <span data-i18n="desc_clear">Reset the current form</span></li>
+                        <li><strong data-i18n="command_agree_terms">"Agree to terms"</strong> - <span data-i18n="desc_agree_terms">Check terms and conditions</span></li>
+                        <li><strong data-i18n="command_show_password">"Show password" / "Hide password"</strong> - <span data-i18n="desc_toggle_password">Toggle password visibility</span></li>
+                        <li><strong data-i18n="command_help">"Help"</strong> - <span data-i18n="desc_help">Show this help dialog</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

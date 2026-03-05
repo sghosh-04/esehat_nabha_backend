@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Doctors - e-Schat Nabha</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="doctors.css" />
+  </head>
+<!-- Ambulance Button -->
+<a href="../home-page/ambulance-booking.html"
+   id="ambulanceBtn"
+   class="ambulance-btn">
+  <i class="fas fa-ambulance"></i>
+  <span class="ambulance-status">Emergency</span>
+</a>
+
+
+<!-- Voice Command Button -->
+<div id="voiceBtn" class="voice-command-btn">
+  <i class="fas fa-microphone"></i>
+  <span class="voice-status">Voice</span>
+</div>
+
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>e-Sehat Nabha</h1>
+          <span class="govt-tag">Government Healthcare Initiative</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../home-page/index.html">Home</a></li>
+            <li><a href="../home-page/services.html">Services</a></li>
+            <li><a href="../home-page/doctors.html" class="active" >Doctors</a></li>
+            <li><a href="../home-page/appointments.html">Appointments</a></li>
+            <li><a href="../home-page/assistant.html">AI Assistant</a></li>
+            <li><a href="../home-page/medicine-booking.html">Medicine</a></li>
+            <li><a href="../home-page/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="auth-buttons">
+            <button class="btn-kiosk" id="kioskBtn">
+              <a href="../home-page/kiosk-registration.html"
+                >Kiosk Registration</a
+              >
+            </button>
+            <button class="btn-outline" id="loginBtn">
+              <a href="../login-page/index.html">Login</a>
+            </button>
+            <button class="btn-primary" id="signupBtn">
+              <a href="../sign-up-page/index.html">Sign Up</a>
+            </button>
+
+            <!-- Language Selector (moved here) -->
+            <div class="language-selector">
+              <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="pa">ਪੰਜਾਬੀ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    <!-- Doctors Hero Section -->
+    <section class="doctors-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 data-translate="ourExpertTeam">Our Expert Medical Team</h1>
+          <p data-translate="meetOurDoctors">
+            Meet our highly qualified and experienced doctors dedicated to
+            providing you with the best healthcare services
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors Filter Section -->
+    <section class="doctors-filter">
+      <div class="container">
+        <div class="filter-container">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="doctorSearch"
+              placeholder="Search doctors by name, specialty or experience..."
+            />
+          </div>
+
+          <div class="filter-options">
+            <div class="filter-group">
+              <label for="specialtyFilter" data-translate="specialty"
+                >Specialty</label
+              >
+              <select id="specialtyFilter">
+                <option value="all" data-translate="allSpecialties">
+                  All Specialties
+                </option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="gynecology">Gynecology</option>
+                <option value="general">General Medicine</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="experienceFilter" data-translate="experience"
+                >Experience</label
+              >
+              <select id="experienceFilter">
+                <option value="all" data-translate="anyExperience">
+                  Any Experience
+                </option>
+                <option value="5">5+ Years</option>
+                <option value="10">10+ Years</option>
+                <option value="15">15+ Years</option>
+                <option value="20">20+ Years</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="availabilityFilter" data-translate="availability"
+                >Availability</label
+              >
+              <select id="availabilityFilter">
+                <option value="all" data-translate="anyAvailability">
+                  Any Availability
+                </option>
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="this-week">This Week</option>
+              </select>
+            </div>
+
+            <button
+              class="btn-outline"
+              id="resetFilters"
+              data-translate="resetFilters"
+            >
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors Grid Section -->
+    <section class="doctors-grid-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-translate="ourMedicalSpecialists">
+            Our Medical Specialists
+          </h2>
+          <p data-translate="chooseFromTeam">
+            Choose from our team of experienced healthcare professionals
+          </p>
+        </div>
+
+        <div class="doctors-grid" id="doctorsGrid">
+          <!-- Doctors will be loaded dynamically from JavaScript -->
+        </div>
+
+        <div class="load-more-container">
+          <button
+            class="btn-outline"
+            id="loadMoreDoctors"
+            data-translate="loadMore"
+          >
+            Load More Doctors
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctor Details Modal -->
+    <div class="modal" id="doctorModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body" id="modalBody">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 data-translate="cantFindDoctor">Can't Find The Right Doctor?</h2>
+        <p data-translate="helpChooseSpecialist">
+          Our team can help you choose the best specialist for your healthcare
+          needs
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary" data-translate="contactUs">
+            Contact Us
+          </button>
+          <button class="btn-outline" data-translate="viewAllServices">
+            View All Services
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>e-Schat Nabha</h3>
+            <p>Your Journey to Better Health Starts Here</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="quickLinks">Quick Links</h4>
+            <ul>
+              <li>
+                <a href="../home-page/index.html" data-translate="home">Home</a>
+              </li>
+              <li>
+                <a href="../home-page/services.html" data-translate="services"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="../home-page/doctors.html" data-translate="doctors"
+                  >Doctors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../home-page/appointments.html"
+                  data-translate="appointments"
+                  >Appointments</a
+                >
+              </li>
+              <li>
+                <a href="../home-page/assistant.html" data-translate="assistant"
+                  >AI Assistant</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../home-page/medicine-booking.html"
+                  data-translate="medicine"
+                  >Medicine</a
+                >
+              </li>
+              <li>
+                <a href="../home-page/contact.html" data-translate="contact"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="specialties">Specialties</h4>
+            <ul>
+              <li><a href="#cardiology">Cardiology</a></li>
+              <li><a href="#neurology">Neurology</a></li>
+              <li><a href="#pediatrics">Pediatrics</a></li>
+              <li><a href="#orthopedics">Orthopedics</a></li>
+              <li><a href="#dermatology">Dermatology</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="contactUsFooter">Contact Us</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Medical Complex, Nabha,
+              Punjab
+            </p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 e-Schat Nabha.
+            <span data-translate="allRightsReserved">All rights reserved.</span>
+            | <a href="#" data-translate="privacyPolicy">Privacy Policy</a> |
+            <a href="#" data-translate="termsOfService">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="doctors.js"></script>
+  </body>
+</html>

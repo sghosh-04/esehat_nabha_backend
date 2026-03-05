@@ -1,0 +1,1180 @@
+/* ============================================
+   RESET & BASE STYLES (Matched to doctors.css)
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* ============================================
+   HEADER & NAVIGATION (Matched to doctors.css)
+   ============================================ */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* EDITED: Removed margin-right: auto to allow for flexible spacing */
+}
+
+.logo h1 {
+    color: #3b5bdb;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.govt-tag {
+    font-size: 10px;
+    color: #666;
+    display: block;
+}
+
+/* Navigation */
+nav {
+    /* ADDED: Creates a small gap between the logo and the nav links */
+    margin-left: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin: 0 5px;
+    padding-right: 5px;
+}
+
+nav a {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: #3b5bdb;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #3b5bdb;
+}
+
+/* Header Right Section */
+.header-right {
+    display: flex;
+    align-items: center;
+    /* ADDED: Pushes the button group to the far right, creating a large gap */
+    margin-left: auto;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ============================================
+   BUTTON STYLES (Matched to doctors.css)
+   ============================================ */
+/* Base Button Styles */
+.btn-primary,
+.btn-outline,
+.btn-kiosk {
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #3b5bdb;
+    color: white;
+    padding: 12px 24px;
+}
+
+.btn-primary:hover {
+    background-color: #3f44b0;
+}
+
+/* Outline Button */
+.btn-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #3b5bdb;
+    padding: 10px 22px;
+}
+
+.btn-outline:hover {
+    background-color: #3b5bdb;
+    color: rgb(0, 0, 0);
+}
+
+/* Kiosk Button */
+.btn-kiosk {
+    background-color: #3b5bdb;
+    color: white;
+    padding: 12px 20px;
+    margin-right: 0; /* EDITED: Removed margin for consistent gap */
+}
+
+.btn-kiosk:hover {
+    background-color: #222ce3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 5px; /* EDITED: Reduced gap for tighter button spacing */
+    align-items: center;
+}
+
+.auth-buttons .btn-kiosk,
+.auth-buttons .btn-primary,
+.auth-buttons .btn-outline {
+    padding: 10px 16px;
+    border: none;
+}
+
+.auth-buttons .btn-kiosk {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+.auth-buttons .btn-kiosk:hover {
+    background-color: #3f44b0;
+}
+
+.auth-buttons .btn-primary {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+.auth-buttons .btn-primary:hover {
+    background-color: #3f44b0;
+}
+
+.auth-buttons .btn-outline {
+    background-color: transparent;
+    color: #3b5bdb;
+    border: 2px solid #3b5bdb;
+}
+
+.auth-buttons .btn-outline:hover {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+/* Login/Signup Link Colors */
+.auth-buttons a.login-link {
+    color: #4c6ef5;
+}
+.auth-buttons a.login-link:hover {
+    color: #3b5bdb;
+}
+
+.auth-buttons a.signup-link {
+    color: #ffffff;
+}
+.auth-buttons a.signup-link:hover {
+    color: #4c6ef5;
+}
+
+/* Load More Button */
+.load-more-container .btn {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+/* ============================================
+   LANGUAGE SELECTOR (Matched to doctors.css)
+   ============================================ */
+.language-selector select {
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+/* ============================================
+   MOBILE NAVIGATION (Matched to doctors.css)
+   ============================================ */
+.mobile-nav {
+    display: none;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.mobile-nav li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-nav a {
+    color: #333;
+    font-weight: 500;
+    display: block;
+}
+
+.mobile-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.mobile-auth .btn-kiosk {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* ============================================
+   MEDICINE BOOKING PAGE SPECIFIC STYLES
+   ============================================ */
+.medicine-section {
+    padding: 48px 0;
+    background: #f8f9fa;
+}
+
+.medicine-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.medicine-header h2 {
+    color: #3b5bdb;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.medicine-header p {
+    color: #555;
+}
+
+/* Search + Filters */
+.search-filter {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 50px;
+    padding: 8px 12px;
+    border: 1px solid #e6e9f2;
+    gap: 8px;
+    min-width: 260px;
+}
+
+.search-container i {
+    color: #888;
+    margin-left: 6px;
+}
+
+.search-container input.search-bar {
+    border: none;
+    outline: none;
+    padding: 8px;
+    min-width: 220px;
+    font-size: 14px;
+}
+
+.search-btn {
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+select#categoryFilter,
+select#sortFilter {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e6e9f2;
+    background: white;
+    min-width: 160px;
+}
+
+/* Layout */
+.medicine-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 28px;
+}
+
+/* Medicines Grid */
+.medicines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.medicine-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(38, 78, 163, 0.06);
+    text-align: center;
+    transition: transform 0.18s ease;
+}
+
+.medicine-card:hover {
+    transform: translateY(-6px);
+}
+
+.medicine-image {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f7ff;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.medicine-image i {
+    font-size: 36px;
+    color: #4c6ef5;
+}
+
+.medicine-name {
+    font-weight: 600;
+    color: #263249;
+    margin-bottom: 6px;
+}
+
+.medicine-brand {
+    color: #6c7a93;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.medicine-price {
+    color: #3b5bdb;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.medicine-stock {
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.medicine-stock.in-stock {
+    color: #4caf50;
+}
+
+.medicine-stock.out-of-stock {
+    color: #f44336;
+}
+
+.medicine-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eef2ff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.quantity-btn {
+    background: #f4f7ff;
+    border: none;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.quantity-input {
+    width: 46px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+/* Add to cart button */
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.add-to-cart-btn:disabled {
+    background-color: #ccc !important;
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.medicine-card:has(.add-to-cart-btn:disabled) {
+    opacity: 0.7;
+}
+
+/* Cart Section */
+.cart {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(38, 78, 163, 0.06);
+    position: sticky;
+    top: 110px;
+    height: fit-content;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+
+.cart-header h3 {
+    color: #3b5bdb;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-count {
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.cart-items {
+    max-height: 320px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+}
+
+.empty-cart {
+    text-align: center;
+    color: #9aa4bf;
+    padding: 20px 0;
+}
+
+.empty-cart i {
+    font-size: 36px;
+    margin-bottom: 8px;
+    display: block;
+    color: #e6e9f2;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f4ff;
+    gap: 12px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    color: #2f3b55;
+    margin-bottom: 6px;
+}
+
+.cart-item-price {
+    color: #3b5bdb;
+    font-weight: 700;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* Cart summary */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #39465b;
+}
+
+.summary-row.total {
+    font-weight: 700;
+    color: #3b5bdb;
+    border-top: 1px solid #eef2ff;
+    padding-top: 10px;
+    margin-top: 8px;
+}
+
+.checkout-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.checkout-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Load More & States */
+.load-more-btn {
+    display: block;
+    margin: 30px auto 10px auto;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 18px rgba(78, 84, 200, 0.35);
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(78, 84, 200, 0.45);
+    opacity: 0.95;
+}
+
+.loading-spinner {
+    text-align: center;
+    color: #2196f3;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #6c7a93;
+    grid-column: 1 / -1;
+}
+
+.no-results i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* ============================================
+   MODAL STYLES (Medicine Specific)
+   ============================================ */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 0 10px 30px rgba(22, 51, 105, 0.12);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border-bottom: 1px solid #f1f4ff;
+}
+
+.modal-body {
+    padding: 18px;
+}
+
+/* Tabs */
+.checkout-tabs {
+    display: flex;
+    border-bottom: 1px solid #eef2ff;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+}
+
+.tab {
+    padding: 10px 14px;
+    cursor: pointer;
+    color: #6c7a93;
+    border-radius: 8px;
+}
+
+.tab.active {
+    color: white;
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    box-shadow: 0 6px 18px rgba(60, 101, 230, 0.12);
+}
+
+/* Tab content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Address cards, options */
+.address-card {
+    border: 1px solid #eef2ff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    background: #fff;
+}
+
+.address-card.selected {
+    border-color: #4c6ef5;
+    background: #f5f9ff;
+}
+
+.select-address-btn {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #f0f4ff;
+    color: #3b5bdb;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #eef2ff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.option.selected {
+    border-color: #4c6ef5;
+    background: #f5f9ff;
+}
+
+/* Payment options */
+.payment-options .option {
+    flex-direction: row;
+}
+
+.payment-options .option i {
+    font-size: 20px;
+    color: #6c7a93;
+    margin-right: 8px;
+}
+
+/* Confirmation */
+.confirmation {
+    padding: 30px;
+    text-align: center;
+}
+
+.confirmation-icon {
+    font-size: 56px;
+    color: #4caf50;
+    margin-bottom: 12px;
+}
+
+/* ============================================
+   FOOTER (Matched to doctors.css)
+   ============================================ */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: #3b5bdb;
+    margin-bottom: 20px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #3b5bdb;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    color: white;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background-color: #3b5bdb;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom a {
+    color: #3b5bdb;
+}
+
+/* ============================================
+   FLOATING BUTTONS (Matched to doctors.css)
+   ============================================ */
+
+/* Ambulance Button Styles */
+.ambulance-btn {
+    position: fixed;
+    bottom: 120px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+    animation: ambulance-pulse 2s infinite;
+    text-decoration: none;
+}
+
+.ambulance-btn:hover {
+    background: linear-gradient(135deg, #cc0000, #990000);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+.ambulance-btn i {
+    font-size: 28px;
+    margin-bottom: 5px;
+    animation: shake 0.5s infinite alternate;
+}
+
+.ambulance-status {
+    font-size: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+@keyframes ambulance-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.3);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(5px);
+    }
+}
+
+/* Voice Command Button */
+.voice-command-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3b5bdb;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    transition: all 0.3s;
+}
+
+.voice-command-btn:hover {
+    background-color: #3f44b0;
+    transform: scale(1.05);
+}
+
+.voice-command-btn.listening {
+    background-color: #e74c3c;
+    animation: pulse 1.5s infinite;
+}
+
+.voice-command-btn i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.voice-status {
+    font-size: 10px;
+    text-align: center;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+/* Voice Feedback Modal */
+.voice-feedback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.voice-feedback.active {
+    display: flex;
+}
+
+.voice-feedback-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.voice-feedback-content i {
+    font-size: 48px;
+    color: #4e54c8;
+    margin-bottom: 15px;
+}
+
+.voice-feedback-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.voice-commands-list {
+    text-align: left;
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.voice-commands-list h4 {
+    margin-bottom: 10px;
+    color: #4e54c8;
+}
+
+.voice-commands-list ul {
+    list-style-type: none;
+}
+
+.voice-commands-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (Merged)
+   ============================================ */
+@media (max-width: 992px) {
+    .medicine-layout {
+        grid-template-columns: 1fr;
+    }
+    .cart {
+        position: relative;
+        top: unset;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header & Nav (Matched to Doctors) */
+    nav {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-kiosk {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    /* Mobile adjustments for ambulance and voice buttons */
+    .ambulance-btn {
+        bottom: 100px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .voice-command-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .ambulance-btn i {
+        font-size: 24px;
+    }
+
+    .voice-command-btn i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-buttons {
+        gap: 8px;
+    }
+    
+    .btn-kiosk,
+    .btn-outline,
+    .btn-primary {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .logo h1 {
+        font-size: 22px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .mobile-auth {
+        padding: 15px;
+    }
+
+    .search-container input.search-bar {
+        min-width: 140px;
+    }
+    
+    .medicine-card {
+        padding: 14px;
+    }
+    
+    .medicine-image {
+        height: 72px;
+    }
+
+    .ambulance-btn {
+        bottom: 90px;
+        right: 15px;
+        width: 65px;
+        height: 65px;
+    }
+
+    .voice-command-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .ambulance-status,
+    .voice-status {
+        font-size: 9px;
+    }
+}

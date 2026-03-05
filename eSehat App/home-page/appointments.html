@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Doctors - e-Schat Nabha</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="appointments.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>e-Sehat Nabha</h1>
+          <span class="govt-tag">Government Healthcare Initiative</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../home-page/index.html">Home</a></li>
+            <li><a href="../home-page/services.html">Services</a></li>
+            <li><a href="../home-page/doctors.html">Doctors</a></li>
+            <li><a href="../home-page/appointments.html" class="active">Appointments</a></li>
+            <li><a href="../home-page/assistant.html">AI Assistant</a></li>
+            <li><a href="../home-page/medicine-booking.html">Medicine</a></li>
+            <li><a href="../home-page/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="auth-buttons">
+            <button class="btn-kiosk" id="kioskBtn">
+              <a href="../home-page/kiosk-registration.html"
+                >Kiosk Registration</a
+              >
+            </button>
+            <button class="btn-outline" id="loginBtn">
+              <a href="../login-page/index.html">Login</a>
+            </button>
+            <button class="btn-primary" id="signupBtn">
+              <a href="../sign-up-page/index.html">Sign Up</a>
+            </button>
+
+            <!-- Language Selector (moved here) -->
+            <div class="language-selector">
+              <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="pa">ਪੰਜਾਬੀ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Appointments Hero Section -->
+    <section class="appointments-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-translate="bookYourAppointment">Book Your Appointment</h1>
+                <p data-translate="scheduleYourVisit">Schedule your visit with our expert doctors at your convenience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Section -->
+    <section class="appointment-booking">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-form-container">
+                    <h2 data-translate="bookNewAppointment">Book New Appointment</h2>
+                    <form id="appointmentForm" class="booking-form">
+                        <div class="form-group">
+                            <label for="department" data-translate="department">Department</label>
+                            <select id="department" required>
+                                <option value="" data-translate="selectDepartment">Select Department</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="gynecology">Gynecology</option>
+                                <option value="general">General Medicine</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor" data-translate="doctor">Doctor</label>
+                            <select id="doctor" required>
+                                <option value="" data-translate="selectDoctor">Select Doctor</option>
+                                <!-- Doctors will be populated based on department selection -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentDate" data-translate="date">Date</label>
+                            <input type="date" id="appointmentDate" required min="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentTime" data-translate="timeSlot">Time Slot</label>
+                            <select id="appointmentTime" required>
+                                <option value="" data-translate="selectTimeSlot">Select Time Slot</option>
+                                <!-- Time slots will be populated based on doctor and date selection -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentType" data-translate="appointmentType">Appointment Type</label>
+                            <div class="radio-group">
+                                <label class="radio-container">
+                                    <input type="radio" name="appointmentType" value="video" checked>
+                                    <span class="checkmark"></span>
+                                    <span data-translate="videoConsultation">Video Consultation</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason" data-translate="reasonForVisit">Reason for Visit</label>
+                            <textarea id="reason" rows="3" placeholder="Briefly describe your symptoms or reason for appointment" data-translate-placeholder="reasonPlaceholder"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" data-translate="bookAppointment">Book Appointment</button>
+                    </form>
+                </div>
+
+                <div class="doctor-details-container">
+                    <div class="doctor-card" id="selectedDoctorCard">
+                        <div class="doctor-image">
+                            <img src="https://placehold.co/300x300/0066cc/white?text=Select+Doctor" alt="Doctor" id="doctorImage">
+                        </div>
+                        <div class="doctor-info">
+                            <h3 id="doctorName" data-translate="selectDoctor">Select a Doctor</h3>
+                            <p class="specialty" id="doctorSpecialty" data-translate="specialtyWillAppear">Specialty will appear here</p>
+                            <p class="experience" id="doctorExperience" data-translate="experienceWillAppear">Experience will appear here</p>
+                            <div class="rating" id="doctorRating">
+                                <div class="stars">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span id="doctorReviews" data-translate="reviews">0 reviews</span>
+                            </div>
+                            <div class="availability" id="doctorAvailability">
+                                <p><strong data-translate="availableDays">Available Days:</strong> <span data-translate="notSelected">Not selected</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appointment-summary" id="appointmentSummary">
+                        <h3 data-translate="appointmentSummary">Appointment Summary</h3>
+                        <div class="summary-details">
+                            <p><strong data-translate="date">Date:</strong> <span id="summaryDate" data-translate="notSelected">Not selected</span></p>
+                            <p><strong data-translate="time">Time:</strong> <span id="summaryTime" data-translate="notSelected">Not selected</span></p>
+                            <p><strong data-translate="type">Type:</strong> <span id="summaryType" data-translate="videoConsultation">Video Consultation</span></p>
+                            <p><strong data-translate="duration">Duration:</strong> <span id="summaryDuration">15-20 minutes</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Appointments Section -->
+    <section class="my-appointments">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-translate="myAppointments">My Appointments</h2>
+                <p data-translate="viewManageAppointments">View and manage your upcoming and past appointments</p>
+            </div>
+
+            <div class="appointments-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="upcoming" data-translate="upcoming">Upcoming</button>
+                    <button class="tab-btn" data-tab="completed" data-translate="completed">Completed</button>
+                    <button class="tab-btn" data-tab="cancelled" data-translate="cancelled">Cancelled</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="upcoming">
+                        <div class="appointments-list" id="upcomingAppointments">
+                            <!-- Upcoming appointments will be loaded here -->
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-plus"></i>
+                                <h3 data-translate="noUpcomingAppointments">No upcoming appointments</h3>
+                                <p data-translate="bookFirstAppointment">Book your first appointment to get started</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="completed">
+                        <div class="appointments-list" id="completedAppointments">
+                            <!-- Completed appointments will be loaded here -->
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-check"></i>
+                                <h3 data-translate="noCompletedAppointments">No completed appointments</h3>
+                                <p data-translate="completedAppointmentsAppear">Your completed appointments will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="cancelled">
+                        <div class="appointments-list" id="cancelledAppointments">
+                            <!-- Cancelled appointments will be loaded here -->
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-times"></i>
+                                <h3 data-translate="noCancelledAppointments">No cancelled appointments</h3>
+                                <p data-translate="cancelledAppointmentsAppear">Your cancelled appointments will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>e-Schat Nabha</h3>
+                    <p data-translate="healthJourney">Your Journey to Better Health Starts Here</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="quickLinks">Quick Links</h4>
+                    <ul>
+                        <li><a href="../home-page/index.html" data-translate="home">Home</a></li>
+                        <li><a href="../home-page/services.html" data-translate="services">Services</a></li>
+                        <li><a href="../home-page/doctors.html" data-translate="doctors">Doctors</a></li>
+                        <li><a href="../home-page/appointments.html" data-translate="appointments">Appointments</a></li>
+                        <li><a href="../home-page/assistant.html" data-translate="assistant">AI Assistant</a></li>
+                        <li><a href="../home-page/medicine-booking.html" data-translate="medicine">Medicine</a></li>
+                        <li><a href="../home-page/contact.html" data-translate="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="specialties">Specialties</h4>
+                    <ul>
+                        <li><a href="#cardiology">Cardiology</a></li>
+                        <li><a href="#neurology">Neurology</a></li>
+                        <li><a href="#pediatrics">Pediatrics</a></li>
+                        <li><a href="#orthopedics">Orthopedics</a></li>
+                        <li><a href="#dermatology">Dermatology</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="contactUs">Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Medical Complex, Nabha, Punjab</p>
+                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                    <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 e-Schat Nabha. <span data-translate="allRightsReserved">All rights reserved.</span> | 
+                   <a href="#" data-translate="privacyPolicy">Privacy Policy</a> | 
+                   <a href="#" data-translate="termsOfService">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Appointment Details Modal -->
+    <div class="modal" id="appointmentModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="appointmentModalBody">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <h3 id="confirmationTitle" data-translate="confirmAction">Confirm Action</h3>
+                <p id="confirmationMessage" data-translate="confirmProceed">Are you sure you want to proceed?</p>
+                <div class="modal-actions">
+                    <button class="btn-outline" id="cancelAction" data-translate="cancel">Cancel</button>
+                    <button class="btn-primary" id="confirmAction" data-translate="confirm">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Voice Command Button -->
+    <div class="voice-command-btn" id="voiceBtn">
+      <i class="fas fa-microphone"></i>
+      <span class="voice-status">Voice Commands</span>
+    </div>
+    <!-- Ambulance Button -->
+    <div class="ambulance-btn" id="ambulanceBtn" onclick="window.location.href='ambulance-booking.html'">
+        <i class="fas fa-ambulance"></i>
+        <span class="ambulance-status">Emergency Ambulance</span>
+    </div>
+
+
+    <script src="appointments-language.js"></script>
+    <script src="appointments.js"></script>
+</body>
+</html>

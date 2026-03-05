@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Dashboard - eSehat Nabha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="kiosk-dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="kiosk-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1><i class="fas fa-clinic-medical"></i> eSehat Kiosk Dashboard</h1>
+                    <span class="kiosk-id">Kiosk ID: <span id="kioskId">KSN-2025</span></span>
+                </div>
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-name" id="kioskName">Kiosk Administrator</span>
+                        <span class="user-role">Nabha Medical Center</span>
+                    </div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="logout-btn">
+                        <a href="../home-page/index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Main Content -->
+    <div class="dashboard-container">
+        <div class="container">
+            <!-- Dashboard Stats -->
+            <section class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Medicine Orders</h3>
+                        <!--<span class="stat-number">24</span>
+                        <span class="stat-label">Pending Today</span>-->
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Ambulance Bookings</h3>
+                        <!--<span class="stat-number">5</span>
+                        <span class="stat-label">Active Requests</span>-->
+                    </div>
+                <!--</div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Seminars/Camps</h3>
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Scheduled</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Blood Donations</h3>
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Requests Today</span>
+                    </div>
+                </div>-->
+            </section>
+
+            <!-- Main Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Left Column -->
+                <div class="dashboard-left">
+                    <!-- Medicine Orders Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-pills"></i> Medicine Orders</h2>
+                            <button class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="orders-list" id="ordersList"></div>
+                            <div style="text-align:center; margin-top:10px;">
+                                <button class="btn-outline" id="loadMoreOrdersBtn" style="display:none;">
+                                    Load More Orders
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </section>
+
+                    
+                   
+
+                    <!-- Ambulance Booking Section 2-->
+                    <section class="dashboard-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-ambulance"></i> Ambulance Bookings</h2>
+                        <button class="btn-refresh">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+
+                    <div class="section-content">
+                        <!-- bookings render here -->
+                        <div class="ambulance-list"></div>
+
+                        <!-- load more -->
+                        <div style="text-align:center; margin-top:12px;">
+                            <button class="btn-outline" id="loadMoreAmbulanceBtn" style="display:none;">
+                                Load More Bookings
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="dashboard-right">
+                    <!-- Medicines Inventory Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-capsules"></i> Medicines Inventory</h2>
+                            <button class="btn-add" id="addMedicineBtn">
+                                <i class="fas fa-plus"></i> Add Medicine
+                            </button>
+                        </div>
+                        <div class="section-content">
+                            <div class="section-content">
+                                <div class="medicines-list" id="medicineList"></div>
+                                <div style="text-align:center; margin-top:10px;">
+                                    <button class="btn-outline" id="loadMoreMedicinesBtn" style="display:none;">
+                                        Load More
+                                    </button>
+                                </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Seminar/Camp Schedule Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-calendar-alt"></i> Seminar & Camp Schedule</h2>
+                            <button class="btn-add" id="addSeminarBtn"><i class="fas fa-plus"></i> Add New</button>
+                        </div>
+                        <div class="section-content">
+                            <div class="schedule-list">
+                                <div class="schedule-item">
+                                    <div class="schedule-date">
+                                        <span class="date-day">25</span>
+                                        <span class="date-month">SEP</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Diabetes Awareness Camp</h4>
+                                        <p>Time: 10:00 AM - 2:00 PM</p>
+                                        <p>Location: Community Health Center</p>
+                                        <span class="schedule-status upcoming">Upcoming</span>
+                                    </div>
+                                </div>
+                                <div class="schedule-item">
+                                    <div class="schedule-date">
+                                        <span class="date-day">28</span>
+                                        <span class="date-month">SEP</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Cardiac Health Seminar</h4>
+                                        <p>Time: 3:00 PM - 5:00 PM</p>
+                                        <p>Location: Municipal Auditorium</p>
+                                        <span class="schedule-status upcoming">Upcoming</span>
+                                    </div>
+                                </div>
+                                <div class="schedule-item">
+                                    <div class="schedule-date past">
+                                        <span class="date-day">20</span>
+                                        <span class="date-month">SEP</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Vaccination Drive</h4>
+                                        <p>Time: 9:00 AM - 4:00 PM</p>
+                                        <p>Location: Primary School Ground</p>
+                                        <span class="schedule-status completed">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Blood Donation Section -->
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-tint"></i> Blood Donation & Requirements</h2>
+                            <div class="blood-filter">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="donors">Donors</button>
+                                <button class="filter-btn" data-filter="requirements">Requirements</button>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="blood-list">
+                                <div class="blood-item donor">
+                                    <div class="blood-type">
+                                        <span class="blood-group">O+</span>
+                                    </div>
+                                    <div class="blood-info">
+                                        <h4>Available Donor</h4>
+                                        <p>Rahul Verma - Last Donation: 3 months ago</p>
+                                        <p>Contact: 98765XXXXX</p>
+                                        <span class="blood-status available">Available</span>
+                                    </div>
+                                </div>
+                                <div class="blood-item requirement urgent">
+                                    <div class="blood-type">
+                                        <span class="blood-group">B+</span>
+                                    </div>
+                                    <div class="blood-info">
+                                        <h4>Urgent Requirement</h4>
+                                        <p>Emergency Surgery - Civil Hospital</p>
+                                        <p>Contact: Dr. Sharma - 97654XXXXX</p>
+                                        <span class="blood-status urgent">Urgent</span>
+                                    </div>
+                                </div>
+                                <div class="blood-item donor">
+                                    <div class="blood-type">
+                                        <span class="blood-group">A+</span>
+                                    </div>
+                                    <div class="blood-info">
+                                        <h4>Available Donor</h4>
+                                        <p>Sunita Devi - Regular Donor</p>
+                                        <p>Contact: 96543XXXXX</p>
+                                        <span class="blood-status available">Available</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="section-footer">
+                                <a href="#" class="view-all-link">View All Records <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Seminar Modal -->
+    <div class="modal-overlay" id="seminarModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Add New Seminar/Camp</h2>
+                <button class="close-btn" id="closeSeminarModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="seminarForm" class="seminar-form">
+                    <div class="form-group">
+                        <label for="seminarTitle">Event Title *</label>
+                        <input type="text" id="seminarTitle" name="seminarTitle" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="seminarDate">Date *</label>
+                            <input type="date" id="seminarDate" name="seminarDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="seminarTime">Time *</label>
+                            <input type="time" id="seminarTime" name="seminarTime" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="seminarDuration">Duration (hours) *</label>
+                        <input type="number" id="seminarDuration" name="seminarDuration" min="1" max="12" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="seminarLocation">Location *</label>
+                        <input type="text" id="seminarLocation" name="seminarLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="seminarDescription">Description</label>
+                        <textarea id="seminarDescription" name="seminarDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Schedule Event</button>
+                        <button type="button" class="btn-outline" id="cancelSeminarBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <button class="close-btn" id="closeOrderModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="order-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Order ID:</span>
+                        <span class="detail-value">#MED-0012</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Patient Name:</span>
+                        <span class="detail-value">Rajesh Kumar</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Contact:</span>
+                        <span class="detail-value">9876543210</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Order Time:</span>
+                        <span class="detail-value">10:25 AM, 22 Sep 2025</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Medicines:</span>
+                        <div class="medicines-list">
+                            <div class="medicine-item">
+                                <span>Paracetamol 500mg</span>
+                                <span>10 tablets</span>
+                            </div>
+                            <div class="medicine-item">
+                                <span>Vitamin C 1000mg</span>
+                                <span>30 tablets</span>
+                            </div>
+                            <div class="medicine-item">
+                                <span>Azithromycin 250mg</span>
+                                <span>5 tablets</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Delivery Address:</span>
+                        <span class="detail-value">House No. 123, Sector 5, Nabha, Punjab</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Status:</span>
+                        <span class="status-badge pending">Pending</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-primary">Accept Order</button>
+                    <button class="btn-outline">Contact Patient</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Medicine Modal -->
+    <div class="modal-overlay" id="medicineModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Add Medicine</h2>
+                <button class="close-btn" id="closeMedicineModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="medicineForm" class="seminar-form">
+
+                    <div class="form-group">
+                        <label>Medicine Name *</label>
+                        <input type="text" id="medicineName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brand *</label>
+                        <input type="text" id="medicineBrand" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="medicineCategory" required>
+                            <option value="">Select</option>
+                            <option value="pain-relief">Pain Relief</option>
+                            <option value="antibiotic">Antibiotic</option>
+                            <option value="diabetes">Diabetes</option>
+                            <option value="cardiac">Cardiac</option>
+                            <option value="respiratory">Respiratory</option>
+                            <option value="gastro">Gastro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Price (₹) *</label>
+                            <input type="number" step="0.01" id="medicinePrice" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Stock Quantity *</label>
+                            <input type="number" id="medicineStock" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Restocked *</label>
+                        <input type="date" id="medicineRestocked" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Medicine</button>
+                        <button type="button" class="btn-outline" id="cancelMedicineBtn">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="kiosk-dashboard.js"></script>
+</body>
+</html>

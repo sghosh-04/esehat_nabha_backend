@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>e-Sehat Nabha - Doctor Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="doctor-dashboard.css"/>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>e-Sehat Nabha</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <!--<a href="#" class="nav-link">Appointments</a>-->
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dr.+Name&background=4b6cb7&color=fff" alt="Doctor Profile" id="doctorProfileImageNav"/>
+                    <span>Dr. <span id="doctorName">Name</span></span>
+                    <i class="fas fa-chevron-down"></i>
+                    <div class="dropdown-menu">
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="dashboard-container">
+        <div class="welcome-section">
+            <div class="welcome-text">
+                <h1>Welcome, Dr. <span id="doctorFirstName">Name</span>!</h1>
+                <p>Here's your professional dashboard with all your medical practice information</p>
+            </div>
+            <div class="date-section">
+                <p id="currentDate"></p>
+                <p id="currentTime"></p>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <div class="section-header">
+                <h2>Professional Information</h2>
+            </div>
+
+            <div class="details-container">
+                <div class="doctor-profile-header">
+                    <div class="profile-image">
+                        <img src="https://ui-avatars.com/api/?name=Dr.+Name&background=4b6cb7&color=fff&size=120" alt="Doctor Profile" id="doctorProfileImage"/>
+                        <div class="profile-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <input type="file" id="profileUpload" accept="image/jpeg,image/png" style="display:none;">
+
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="doctorFullName">Dr. John Doe</h2>
+                        <p class="specialization" id="doctorSpecialization">Cardiologist</p>
+                        <p class="experience" id="doctorExperience">12 years of experience</p>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span id="doctorRating">4.7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-grid">
+                    <div class="details-left">
+                        <div class="detail-item">
+                            <label>Email Address</label>
+                            <p id="doctorEmail">dr.johndoe@example.com</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Phone Number</label>
+                            <p id="doctorPhone">+91 9876543210</p>
+                        </div>
+                    </div>
+                    <div class="details-right">
+                        <div class="detail-item">
+                            <label>Registration Number</label>
+                            <p id="doctorRegNumber">LIC4895</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Clinic Address</label>
+                            <p id="doctorAddress">Kolkata</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="specializations-section">
+                <div class="qualifications">
+                    <div class="qualification-item">
+                        <h4></h4>
+                        <ul id="specializationsList">
+                            <!-- Specializations will be populated dynamically -->
+                        </ul>
+                    </div>
+                    <div class="qualification-item">
+                        <h4></h4>
+                        <ul id="qualificationsList">
+                            <!-- Qualifications will be populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        <div class="appointments-section">
+            <div class="section-header">
+                <h2>Appointments</h2>
+            </div>
+
+            <div class="appointments-list" id="appointmentsList">
+                <!-- Appointments will be populated dynamically -->
+                <div class="appointment-item">
+                    <div class="appointment-info">
+                        <h4 class="patient-name">Rahul Sharma</h4>
+                    </div>
+                    <div class="appointment-date">
+                        <span class="date">November 25, 2024</span>
+                    </div>
+                    <div class="appointment-time">
+                        <span class="time">09:00 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="doctor-dashboard.js"></script>
+    
+</body>
+</html>

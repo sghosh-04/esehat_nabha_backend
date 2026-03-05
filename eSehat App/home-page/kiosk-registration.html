@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Admin Registration - eSehat</title>
+    <link rel="stylesheet" href="kiosk-registration.css">
+</head>
+<body>
+    <div class="container">
+        <div class="registration-card">
+            <div class="header">
+                <h1>Kiosk Admin Registration</h1>
+                <p>Create your kiosk administrator account</p>
+            </div>
+            
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                    <span class="error-message" id="fullNameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                    <span class="error-message" id="phoneNumberError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select Role</option>
+                          <option value="kiosk-manager">Kiosk Manager</option>
+                        <option value="kiosk-staff">Kiosk Staff</option>
+                    </select>
+                    <span class="error-message" id="roleError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="kioskLocation">Kiosk Location</label>
+                    <input type="text" id="kioskLocation" name="kioskLocation" required>
+                    <span class="error-message" id="kioskLocationError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+                
+                <div class="form-group terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                    <span class="error-message" id="termsError"></span>
+                </div>
+                
+                <button type="submit" class="submit-btn">Register</button>
+                
+                <div class="login-link">
+                    <p>Already have an account? <a href="../home-page/kiosk-login.html">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="kiosk-registration.js"></script>
+</body>
+</html>

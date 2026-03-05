@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Doctors - e-Schat Nabha</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="medicine-booking.css" />
+  </head>
+  
+  <!-- Ambulance Emergency Button -->
+<a href="../home-page/ambulance-booking.html"
+   id="ambulanceBtn"
+   class="ambulance-btn"
+   title="Emergency Ambulance">
+  <i class="fas fa-ambulance"></i>
+  <span class="ambulance-status">Emergency</span>
+</a>
+
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>e-Sehat Nabha</h1>
+          <span class="govt-tag">Government Healthcare Initiative</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../home-page/index.html">Home</a></li>
+            <li><a href="../home-page/services.html">Services</a></li>
+            <li><a href="../home-page/doctors.html">Doctors</a></li>
+            <li><a href="../home-page/appointments.html">Appointments</a></li>
+            <li><a href="../home-page/assistant.html">AI Assistant</a></li>
+            <li><a href="../home-page/medicine-booking.html" class="active" data-translate="medicine">Medicine</a></li>
+            <li><a href="../home-page/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="auth-buttons">
+            <button class="btn-kiosk" id="kioskBtn">
+              <a href="../home-page/kiosk-registration.html"
+                >Kiosk Registration</a
+              >
+            </button>
+            <button class="btn-outline" id="loginBtn">
+              <a href="../login-page/index.html">Login</a>
+            </button>
+            <button class="btn-primary" id="signupBtn">
+              <a href="../sign-up-page/index.html">Sign Up</a>
+            </button>
+
+            <!-- Language Selector (moved here) -->
+            <div class="language-selector">
+              <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="pa">ਪੰਜਾਬੀ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- Medicine Booking Section -->
+    <section class="medicine-section">
+      <div class="container">
+        <div class="medicine-header">
+          <h2 data-translate="medicine_booking">Medicine Booking</h2>
+          <p data-translate="medicine_booking_desc">Search medicines, add to cart and place orders for home delivery.</p>
+        </div>
+
+        <!-- Search + Filters -->
+        <div class="medicine-controls search-filter">
+          <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="medicineSearch"
+              class="search-bar"
+              placeholder="Search medicines, brands, categories..."
+              data-translate-placeholder="search_placeholder"
+            />
+            <button class="search-btn" id="searchBtn" data-translate="search">Search</button>
+          </div>
+
+          <select id="categoryFilter">
+            <option value="" data-translate="all_categories">All Categories</option>
+            <option value="pain-relief" data-translate="pain_relief">Pain Relief</option>
+            <option value="vitamins" data-translate="vitamins">Vitamins & Supplements</option>
+            <option value="cardiac" data-translate="cardiac">Cardiac</option>
+            <option value="diabetes" data-translate="diabetes">Diabetes</option>
+            <option value="respiratory" data-translate="respiratory">Respiratory</option>
+            <option value="antibiotic" data-translate="antibiotic">Antibiotic</option>
+            <option value="gastro" data-translate="gastro">Gastro</option>
+          </select>
+
+          <select id="sortFilter">
+            <option value="popularity" data-translate="popularity">Popularity</option>
+            <option value="price-low" data-translate="price_low">Price: Low to High</option>
+            <option value="price-high" data-translate="price_high">Price: High to Low</option>
+            <option value="name" data-translate="name">Name</option>
+          </select>
+        </div>
+
+        <!-- Layout: medicines grid + cart -->
+        <div class="medicine-layout">
+          <!-- Medicines Grid -->
+          <div class="medicines-grid" id="medicinesGrid">
+            <!-- JS populates medicine cards here -->
+          </div>
+
+          <!-- Cart -->
+          <aside class="cart-section cart" aria-labelledby="cartHeading">
+            <div class="cart-header">
+              <h3 id="cartHeading">
+                <i class="fas fa-shopping-cart"></i> <span data-translate="your_cart">Your Cart</span>
+              </h3>
+              <span class="cart-count" id="cartCount">0</span>
+            </div>
+
+            <div class="cart-items" id="cartItems">
+              <!-- Empty cart placeholder filled by JS -->
+              <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p data-translate="cart_empty">Your cart is empty</p>
+                <span data-translate="add_medicines">Add medicines from the list</span>
+              </div>
+            </div>
+
+            <div class="cart-summary cart-total">
+              <div class="summary-row">
+                <span data-translate="subtotal">Subtotal</span>
+                <span id="subtotal">₹0.00</span>
+              </div>
+              <div class="summary-row">
+                <span data-translate="discount">Discount</span>
+                <span id="discount">-₹0.00</span>
+              </div>
+              <div class="summary-row total">
+                <span data-translate="total">Total</span>
+                <span id="total">₹0.00</span>
+              </div>
+
+              <button class="checkout-btn" id="checkoutBtn" disabled>
+                <a href="../login-page/index.html" data-translate="proceed_checkout">Proceed to Checkout</a>
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 data-translate="checkout">Checkout</h2>
+          <span class="close" title="Close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="checkout-tabs">
+            <div class="tab active" data-tab="delivery" data-translate="delivery_address">Delivery Address</div>
+            <div class="tab" data-tab="payment" data-translate="payment">Payment</div>
+          </div>
+
+          <div class="tab-content active" id="deliveryTab">
+            <div class="address-list">
+              <div class="address-card selected">
+                <h4 data-translate="home_address">Home Address</h4>
+                <p>123 Main Street, Nabha, Punjab 147201</p>
+                <p>Phone: +91 9876543210</p>
+                <button class="select-address-btn" data-translate="selected">Selected</button>
+              </div>
+
+              <div class="address-card">
+                <h4 data-translate="work_address">Work Address</h4>
+                <p>456 Office Road, Nabha, Punjab 147201</p>
+                <p>Phone: +91 9876543210</p>
+                <button class="select-address-btn" data-translate="select">Select</button>
+              </div>
+
+              <div class="add-new-address">
+                <i class="fas fa-plus"></i>
+                <span data-translate="add_new_address">Add New Address</span>
+              </div>
+            </div>
+
+            <div class="delivery-options">
+              <h4 data-translate="delivery_option">Delivery Option</h4>
+              <div class="option selected">
+                <input type="radio" name="deliveryOption" id="standardDelivery" checked />
+                <label for="standardDelivery">
+                  <span class="option-title" data-translate="standard_delivery">Standard Delivery</span>
+                  <span class="option-desc" data-translate="standard_desc">Delivery within 2-3 days</span>
+                  <span class="option-price" data-translate="free">Free</span>
+                </label>
+              </div>
+
+              <div class="option">
+                <input type="radio" name="deliveryOption" id="expressDelivery" />
+                <label for="expressDelivery">
+                  <span class="option-title" data-translate="express_delivery">Express Delivery</span>
+                  <span class="option-desc" data-translate="express_desc">Delivery within 24 hours</span>
+                  <span class="option-price">₹50</span>
+                </label>
+              </div>
+            </div>
+
+            <button class="btn next-tab-btn" data-next="payment" data-translate="continue_payment">
+              Continue to Payment
+            </button>
+          </div>
+
+          <div class="tab-content" id="paymentTab">
+            <div class="payment-options">
+              <div class="option selected">
+                <input type="radio" name="paymentOption" id="cashOnDelivery" checked />
+                <label for="cashOnDelivery">
+                  <i class="fas fa-money-bill-wave"></i>
+                  <span data-translate="cash_on_delivery">Cash on Delivery</span>
+                </label>
+              </div>
+
+              <div class="option">
+                <input type="radio" name="paymentOption" id="cardPayment" />
+                <label for="cardPayment">
+                  <i class="fas fa-credit-card"></i>
+                  <span data-translate="card_payment">Credit/Debit Card</span>
+                </label>
+              </div>
+
+              <div class="option">
+                <input type="radio" name="paymentOption" id="upiPayment" />
+                <label for="upiPayment">
+                  <i class="fas fa-mobile-alt"></i>
+                  <span data-translate="upi_payment">UPI Payment</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="order-summary">
+              <h4 data-translate="order_summary">Order Summary</h4>
+              <div class="summary-row">
+                <span data-translate="medicines_total">Medicines Total</span>
+                <span id="checkoutSubtotal">₹0.00</span>
+              </div>
+              <div class="summary-row">
+                <span data-translate="delivery_fee">Delivery Fee</span>
+                <span id="deliveryFee" data-translate="free">Free</span>
+              </div>
+              <div class="summary-row total">
+                <span data-translate="total">Total</span>
+                <span id="checkoutTotal">₹0.00</span>
+              </div>
+            </div>
+
+            <button class="btn place-order-btn" id="placeOrderBtn" data-translate="place_order">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmationModal" role="dialog" aria-modal="true">
+      <div class="modal-content confirmation">
+        <div class="confirmation-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 data-translate="order_success">Order Placed Successfully!</h2>
+        <p data-translate="order_id">Your order ID is: <strong id="orderId">ESH123456</strong></p>
+        <p data-translate="order_delivery">Your medicines will be delivered within 2-3 days.</p>
+        <div class="confirmation-actions">
+          <button class="btn view-orders-btn" data-translate="view_orders">View Orders</button>
+          <button class="btn continue-shopping-btn" id="continueShoppingBtn" data-translate="continue_shopping">
+            Continue Shopping
+          </button>
+        </div>
+        <span class="close" title="Close">&times;</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 data-translate="site_name">e-Sehat Nabha</h3>
+            <p data-translate="footer_tagline">Your Journey to Better Health Starts Here</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="services">Services</h4>
+            <ul>
+              <li data-translate="online_consultation">Online Consultation</li>
+              <li data-translate="appointment_booking">Appointment Booking</li>
+              <li data-translate="medicine_delivery">Medicine Delivery</li>
+              <li data-translate="health_records">Health Records</li>
+              <li data-translate="emergency_care">Emergency Care</li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="quick_links">Quick Links</h4>
+            <ul>
+              <li><a href="../home-page/index.html" data-translate="home">Home</a></li>
+              <li><a href="../home-page/services.html" data-translate="services">Services</a></li>
+              <li><a href="../home-page/doctors.html" data-translate="doctors">Doctors</a></li>
+              <li><a href="../home-page/appointments.html" data-translate="appointments">Appointments</a></li>
+              <li><a href="../home-page/medicine-booking.html" data-translate="medicine">Medicine</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 data-translate="contact_us">Contact Us</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> <span data-translate="address">Medical Complex, Nabha, Punjab</span>
+            </p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> info@esehatnabha.com</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <span data-translate="site_name">e-Sehat<br>Nabha</span>. <span data-translate="all_rights_reserved">All rights reserved.</span> |
+            <a href="#" data-translate="privacy_policy">Privacy Policy</a> | <a href="#" data-translate="terms_of_service">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Page JS -->
+    <script src="medicine-booking.js"></script>
+    <script src="language-translations.js"></script>
+  </body>
+</html>>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>e-Schat Nabha - Your Journey to Better Health</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Language Selector
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="pa">ਪੰਜਾਬੀ</option>
+        </select>
+    </div> -->
+
+    <!-- Voice Command Button -->
+    <div class="voice-command-btn" id="voiceBtn">
+      <i class="fas fa-microphone"></i>
+      <span class="voice-status">Voice Commands</span>
+    </div>
+
+    <!-- Ambulance Button -->
+    <div class="ambulance-btn" id="ambulanceBtn">
+      <i class="fas fa-ambulance"></i>
+      <span class="ambulance-status">Emergency Ambulance</span>
+    </div>
+
+    <script>
+      document
+        .getElementById("ambulanceBtn")
+        .addEventListener("click", function () {
+          window.location.href = "../home-page/ambulance-booking.html";
+        });
+    </script>
+
+    <!--Voice Command Feedback-->
+    <div class="voice-feedback" id="voiceFeedback">
+      <div class="voice-feedback-content">
+        <i class="fas fa-microphone" id="voiceIcon"></i>
+        <p id="voiceText">Say a command...</p>
+        <div class="voice-commands-list">
+          <h4>Available Commands:</h4>
+          <div class="language-tabs">
+            <button class="tab-button active" data-lang="en">English</button>
+            <button class="tab-button" data-lang="hi">हिन्दी</button>
+            <button class="tab-button" data-lang="pa">ਪੰਜਾਬੀ</button>
+          </div>
+          <div class="commands-content">
+            <div id="en-commands" class="tab-content active">
+              <ul>
+                <li>"Go to home" - Navigate to home page</li>
+                <li>"Book appointment" - Book an appointment</li>
+                <li>"Consult online" - Start online consultation</li>
+                <li>"Find doctors" - Browse doctors</li>
+                <li>"Medicine delivery" - Order medicines</li>
+                <li>"Health records" - View health records</li>
+                <li>"Services" - View all services</li>
+                <li>"Contact us" - Contact information</li>
+                <li>"Login" - Open login page</li>
+                <li>"Sign up" - Open registration</li>
+                <li>"Emergency ambulance" - Call emergency ambulance</li>
+                <li>"Help" - Show available commands</li>
+                <li>"Stop listening" - Turn off voice commands</li>
+              </ul>
+            </div>
+            <div id="hi-commands" class="tab-content">
+              <ul>
+                <li>"घर जाओ" - होम पेज पर जाएं</li>
+                <li>"अपॉइंटमेंट बुक करो" - अपॉइंटमेंट बुक करें</li>
+                <li>"ऑनलाइन परामर्श" - ऑनलाइन परामर्श शुरू करें</li>
+                <li>"डॉक्टर से मिलो" - डॉक्टरों को ब्राउज़ करें</li>
+                <li>"दवा डिलीवरी" - दवाएं ऑर्डर करें</li>
+                <li>"स्वास्थ्य रिकॉर्ड" - स्वास्थ्य रिकॉर्ड देखें</li>
+                <li>"सेवाएं" - सभी सेवाएं देखें</li>
+                <li>"संपर्क करें" - संपर्क जानकारी</li>
+                <li>"लॉगिन" - लॉगिन पेज खोलें</li>
+                <li>"साइन अप" - रजिस्ट्रेशन खोलें</li>
+                <li>"इमरजेंसी एम्बुलेंस" - इमरजेंसी एम्बुलेंस बुलाएं</li>
+                <li>"मदद" - उपलब्ध कमांड दिखाएं</li>
+                <li>"सुनना बंद करो" - वॉइस कमांड बंद करें</li>
+              </ul>
+            </div>
+            <div id="pa-commands" class="tab-content">
+              <ul>
+                <li>"ਘਰ ਜਾਓ" - ਹੋਮ ਪੇਜ 'ਤੇ ਜਾਓ</li>
+                <li>"ਅਪਾਇੰਟਮੈਂਟ ਬੁਕ ਕਰੋ" - ਅਪਾਇੰਟਮੈਂਟ ਬੁਕ ਕਰੋ</li>
+                <li>"ਔਨਲਾਈਨ ਸਲਾਹ" - ਔਨਲਾਈਨ ਸਲਾਹ ਸ਼ੁਰੂ ਕਰੋ</li>
+                <li>"ਡਾਕਟਰ ਮਿਲੋ" - ਡਾਕਟਰਾਂ ਨੂੰ ਬ੍ਰਾਊਜ਼ ਕਰੋ</li>
+                <li>"ਦਵਾਈ ਡਿਲੀਵਰੀ" - ਦਵਾਈਆਂ ਆਰਡਰ ਕਰੋ</li>
+                <li>"ਸਿਹਤ ਰਿਕਾਰਡ" - ਸਿਹਤ ਰਿਕਾਰਡ ਦੇਖੋ</li>
+                <li>"ਸੇਵਾਵਾਂ" - ਸਾਰੀਆਂ ਸੇਵਾਵਾਂ ਦੇਖੋ</li>
+                <li>"ਸੰਪਰਕ ਕਰੋ" - ਸੰਪਰਕ ਜਾਣਕਾਰੀ</li>
+                <li>"ਲੌਗਿਨ" - ਲੌਗਿਨ ਪੇਜ ਖੋਲ੍ਹੋ</li>
+                <li>"ਸਾਈਨ ਅੱਪ" - ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਖੋਲ੍ਹੋ</li>
+                <li>"ਐਮਰਜੈਂਸੀ ਐਂਬੂਲੈਂਸ" - ਐਮਰਜੈਂਸੀ ਐਂਬੂਲੈਂਸ ਬੁਲਾਓ</li>
+                <li>"ਮਦਦ" - ਉਪਲਬਧ ਕਮਾਂਡ ਦਿਖਾਓ</li>
+                <li>"ਸੁਣਨਾ ਬੰਦ ਕਰੋ" - ਵੌਇਸ ਕਮਾਂਡ ਬੰਦ ਕਰੋ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>e-Sehat Nabha</h1>
+          <span class="govt-tag">Government Healthcare Initiative</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../home-page/index.html" class="active">Home</a></li>
+            <li><a href="../home-page/services.html">Services</a></li>
+            <li><a href="../home-page/doctors.html">Doctors</a></li>
+            <li><a href="../home-page/appointments.html">Appointments</a></li>
+            <li><a href="../home-page/assistant.html">AI Assistant</a></li>
+            <li><a href="../home-page/medicine-booking.html">Medicine</a></li>
+            <li><a href="../home-page/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="auth-buttons">
+            <button class="btn-kiosk" id="kioskBtn">
+              <a href="../home-page/kiosk-registration.html"
+                >Kiosk Registration</a
+              >
+            </button>
+            <button class="btn-outline" id="loginBtn">
+              <a href="../login-page/index.html">Login</a>
+            </button>
+            <button class="btn-primary" id="signupBtn">
+              <a href="../sign-up-page/index.html">Sign Up</a>
+            </button>
+
+            <!-- Language Selector (moved here) -->
+            <div class="language-selector">
+              <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="pa">ਪੰਜਾਬੀ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2 data-translate="hero_title">
+            Your Journey to Better Health Starts Here
+          </h2>
+          <p data-translate="hero_desc">
+            Access quality healthcare services from the comfort of your home.
+            Book appointments, consult doctors, and manage your health records
+            all in one place.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn-primary" data-translate="book_appointment">
+              <a href="../login-page/index.html">Book an Appointment</a>
+            </button>
+            <button class="btn-outline" data-translate="consult_online">
+              <a href="../login-page/index.html">Consult Online</a>
+            </button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://tse2.mm.bing.net/th/id/OIP.iNEiMa5vMe2du53na28eWgHaHa?pid=ImgDet&w=184&h=184&c=7&dpr=1.3&o=7&rm=3"
+            alt="Healthcare Illustration"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+      <div class="container">
+        <h2 data-translate="our_services">Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h3 data-translate="appointment_booking">Appointment Booking</h3>
+            <p data-translate="appointment_desc">
+              Book appointments with specialist doctors at your convenience.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <h3 data-translate="online_consultation">Online Consultation</h3>
+            <p data-translate="consultation_desc">
+              Consult with doctors online through secure video calls.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-pills"></i>
+            </div>
+            <h3 data-translate="medicine_delivery">Medicine Delivery</h3>
+            <p data-translate="medicine_desc">
+              Get your prescribed medicines delivered to your doorstep.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-file-medical"></i>
+            </div>
+            <h3 data-translate="health_records">Health Records</h3>
+            <p data-translate="records_desc">
+              Access and manage your health records anytime, anywhere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <div class="container">
+        <h2 data-translate="how_it_works">How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3 data-translate="create_account">Create Account</h3>
+            <p data-translate="account_desc">
+              Sign up and complete your health profile
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3 data-translate="choose_service">Choose Service</h3>
+            <p data-translate="service_desc">
+              Select the healthcare service you need
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3 data-translate="book_appointment_step">Book Appointment</h3>
+            <p data-translate="appointment_step_desc">
+              Schedule your visit or online consultation
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3 data-translate="get_treatment">Get Treatment</h3>
+            <p data-translate="treatment_desc">
+              Receive quality healthcare and follow-up
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 data-translate="testimonials">What Our Patients Say</h2>
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              <p data-translate="testimonial_1">
+                "e-Schat Nabha made it so easy to consult with a specialist
+                without traveling long distances. The video consultation was
+                smooth and the doctor was very helpful."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <h4>Rajesh Kumar</h4>
+              <p data-translate="patient">Patient</p>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              <p data-translate="testimonial_2">
+                "The medicine delivery service is a lifesaver for my elderly
+                parents. We get all their medications on time without any
+                hassle."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <h4>Priya Singh</h4>
+              <p data-translate="customer">Customer</p>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              <p data-translate="testimonial_3">
+                "Having all my health records in one place has made managing my
+                chronic condition much easier. I can easily share them with any
+                doctor I consult."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <h4>Amrit Pal</h4>
+              <p data-translate="patient">Patient</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download App Section -->
+    <section class="download-app">
+      <div class="container">
+        <div class="download-content">
+          <h2 data-translate="download_app">Download e-Schat Nabha</h2>
+          <p data-translate="download_desc">
+            Access healthcare services on the go with our mobile application.
+            Available on both iOS and Android platforms.
+          </p>
+          <div class="app-buttons">
+            <button class="app-btn">
+              <i class="fab fa-apple"></i>
+              <span>App Store</span>
+            </button>
+            <button class="app-btn">
+              <i class="fab fa-google-play"></i>
+              <span>Google Play</span>
+            </button>
+          </div>
+        </div>
+        <div class="download-image">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgMzAwIDUwMCI+PHJlY3QgeD0iNTAiIHk9IjUwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjQwMCIgcng9IjIwIiByeT0iMjAiIGZpbGw9IiM0ZTU0YzgiLz48cmVjdCB4PSI2MCIgeT0iNzAiIHdpZHRoPSIxODAiIGhlaWdodD0iMzYwIiByeD0iMTAiIHJ5PSIxMCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEyMCIgcj0iMzAiIGZpbGw9IiM0ZTU0YzgiLz48cmVjdCB4PSI3MCIgeT0iMTgwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjQwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM0ZTU0YzgiLz48cmVjdCB4PSI3MCIgeT0iMjQwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjQwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM0ZTU0YzgiLz48cmVjdCB4PSI3MCIgeT0iMzAwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjQwIiByeD0iNSIgcnk9IjUiIGZpbGw9IiM0ZTU0YzgiLz48L3N2Zz4="
+            alt="Mobile App"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>e-Schat Nabha</h3>
+            <p data-translate="footer_tagline">
+              Your Journey to Better Health Starts Here
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="quick_links">Quick Links</h4>
+            <ul>
+              <li>
+                <a href="../home-page/index.html" data-translate="home">Home</a>
+              </li>
+              <li>
+                <a href="../home-page/services.html" data-translate="services"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="../home-page/doctors.html" data-translate="doctors"
+                  >Doctors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../home-page/appointments.html"
+                  data-translate="appointments"
+                  >Appointments</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../home-page/assistant.html"
+                  data-translate="appointments"
+                  >AI Assistant</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../home-page/medicine-booking.html"
+                  data-translate="Medicine"
+                  >Medicine</a
+                >
+              </li>
+              <li>
+                <a href="../home-page/contact.html" data-translate="contact"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="services">Services</h4>
+            <ul>
+              <li>Online Consultation</li>
+              <li>Appointment Booking</li>
+              <li>Medicine Delivery</li>
+              <li>Health Records</li>
+              <li>Emergency Care</li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 data-translate="contact_us">Contact Us</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>
+              <span data-translate="address"
+                >Medical Complex, Nabha, Punjab</span
+              >
+            </p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> info@eschatnabha.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 e-Schat Nabha. All rights reserved. |
+            <a href="#" data-translate="privacy_policy">Privacy Policy</a> |
+            <a href="#" data-translate="terms_service">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="voice-commands.js"></script>
+    <script src="translations.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1014 @@
+/* ============================================
+   RESET & BASE STYLES (Matched to doctors.css)
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* ============================================
+   HEADER & NAVIGATION (Matched to doctors.css)
+   ============================================ */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* EDITED: Removed margin-right: auto to allow for flexible spacing */
+}
+
+.logo h1 {
+    color: #3b5bdb;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.govt-tag {
+    font-size: 10px;
+    color: #666;
+    display: block;
+}
+
+/* Navigation */
+nav {
+    /* ADDED: Creates a small gap between the logo and the nav links */
+    margin-left: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    /* EDITED: Standardized nav item spacing */
+    margin: 0 5px;
+    padding-right: 5px;
+}
+
+nav a {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: #3b5bdb;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #3b5bdb;
+}
+
+/* Header Right Section */
+.header-right {
+    display: flex;
+    align-items: center;
+    /* ADDED: Pushes the button group to the far right, creating a large gap */
+    margin-left: auto;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/* ============================================
+   BUTTON STYLES (Consolidated)
+   ============================================ */
+/* Base Button Styles */
+.btn-primary,
+.btn-outline,
+.btn-kiosk {
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #3b5bdb;
+    color: white;
+    padding: 12px 24px;
+}
+
+.btn-primary:hover {
+    background-color: #3f44b0;
+}
+
+/* Outline Button */
+.btn-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #3b5bdb;
+    padding: 10px 22px;
+}
+
+.btn-outline:hover {
+    background-color: #3b5bdb;
+    color: rgb(0, 0, 0);
+}
+
+/* Kiosk Button */
+.btn-kiosk {
+    background-color: #3b5bdb;
+    color: white;
+    padding: 12px 20px;
+    margin-right: 0; /* EDITED: Removed margin for consistent gap */
+}
+
+.btn-kiosk:hover {
+    background-color: #222ce3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 5px; /* EDITED: Reduced gap for tighter button spacing */
+    align-items: center;
+}
+
+.auth-buttons .btn-kiosk,
+.auth-buttons .btn-primary,
+.auth-buttons .btn-outline {
+    padding: 10px 16px;
+    border: none;
+}
+
+.auth-buttons .btn-kiosk {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+.auth-buttons .btn-kiosk:hover {
+    background-color: #3f44b0;
+}
+
+.auth-buttons .btn-primary {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+.auth-buttons .btn-primary:hover {
+    background-color: #3f44b0;
+}
+
+.auth-buttons .btn-outline {
+    background-color: transparent;
+    color: #3b5bdb;
+    border: 2px solid #3b5bdb;
+}
+
+.auth-buttons .btn-outline:hover {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+/* Load More Button */
+.load-more-container .btn {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+/* Doctor Actions Button */
+.doctor-actions .btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+/* ============================================
+   LANGUAGE SELECTOR
+   ============================================ */
+.language-selector select {
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+/* ============================================
+   MOBILE NAVIGATION
+   ============================================ */
+.mobile-nav {
+    display: none;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.mobile-nav li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-nav a {
+    color: #333;
+    font-weight: 500;
+    display: block;
+}
+
+.mobile-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.mobile-auth .btn-kiosk {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* ============================================
+   CONTACT PAGE SPECIFIC STYLES
+   ============================================ */
+.contact-hero {
+    background: linear-gradient(135deg, #4a7bd9 0%, #3c83fc 100%);
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-hero-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-section {
+    padding: 80px 0;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info,
+.contact-form-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3,
+.contact-form-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #4e54c8;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.contact-icon {
+    background: #4e54c8;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.contact-icon:hover {
+    background: #3a3e9e;
+}
+
+.contact-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.contact-details p {
+    margin: 3px 0;
+    color: #666;
+}
+
+.social-links {
+    margin-top: 40px;
+}
+
+.social-links h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Contact Form */
+.contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4e54c8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(78, 84, 200, 0.3);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+    min-height: 20px;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: none;
+    align-items: center;
+}
+
+.success-message i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+/* Map Section */
+.map-section {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.map-section h3 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #4e54c8;
+    font-size: 1.8rem;
+}
+
+.map-container {
+    height: 400px;
+    background: #e6e6e6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder {
+    text-align: center;
+    color: #666;
+}
+
+.map-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #4e54c8;
+}
+
+.map-placeholder h4 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.map-placeholder p {
+    margin-bottom: 20px;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #4e54c8;
+    font-size: 2rem;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.faq-question h4 {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+}
+
+.faq-question i {
+    color: #4e54c8;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 0 20px 0;
+    display: none;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Emergency Banner */
+.emergency-banner {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    padding: 30px 0;
+    margin: 40px 0;
+}
+
+.emergency-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.emergency-icon {
+    font-size: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.emergency-icon:hover {
+    transform: scale(1.1);
+}
+
+.emergency-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.emergency-info p {
+    margin: 0;
+}
+
+.btn-emergency {
+    background: #fff;
+    color: #e74c3c;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.btn-emergency i {
+    margin-right: 10px;
+}
+
+.btn-emergency:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   FOOTER (Matched to doctors.css)
+   ============================================ */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: #3b5bdb;
+    margin-bottom: 20px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #3b5bdb;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    color: white;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background-color: #3b5bdb;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom a {
+    color: #3b5bdb;
+}
+
+/* ============================================
+   FLOATING BUTTONS (Matched to doctors.css)
+   ============================================ */
+
+/* Ambulance Button Styles */
+.ambulance-btn {
+    position: fixed;
+    bottom: 120px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+    animation: ambulance-pulse 2s infinite;
+    text-decoration: none;
+}
+
+.ambulance-btn:hover {
+    background: linear-gradient(135deg, #cc0000, #990000);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+.ambulance-btn i {
+    font-size: 28px;
+    margin-bottom: 5px;
+    animation: shake 0.5s infinite alternate;
+}
+
+.ambulance-status {
+    font-size: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+@keyframes ambulance-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.3);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(5px);
+    }
+}
+
+/* Voice Command Button */
+.voice-command-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3b5bdb;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    transition: all 0.3s;
+}
+
+.voice-command-btn:hover {
+    background-color: #3f44b0;
+    transform: scale(1.05);
+}
+
+.voice-command-btn.listening {
+    background-color: #e74c3c;
+    animation: pulse 1.5s infinite;
+}
+
+.voice-command-btn i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.voice-status {
+    font-size: 10px;
+    text-align: center;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+/* Voice Feedback Modal */
+.voice-feedback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.voice-feedback.active {
+    display: flex;
+}
+
+.voice-feedback-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.voice-feedback-content i {
+    font-size: 48px;
+    color: #4e54c8;
+    margin-bottom: 15px;
+}
+
+.voice-feedback-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.voice-commands-list {
+    text-align: left;
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.voice-commands-list h4 {
+    margin-bottom: 10px;
+    color: #4e54c8;
+}
+
+.voice-commands-list ul {
+    list-style-type: none;
+}
+
+.voice-commands-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ============================================
+   MODAL STYLES (General)
+   ============================================ */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 0 10px 30px rgba(22, 51, 105, 0.12);
+    position: relative;
+    animation: modalopen 0.5s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border-bottom: 1px solid #f1f4ff;
+}
+
+.modal-body {
+    padding: 18px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (Merged)
+   ============================================ */
+@media (max-width: 1200px) {
+    nav {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .header-right {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile adjustments for ambulance and voice buttons */
+    .ambulance-btn {
+        bottom: 100px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .voice-command-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .ambulance-btn i {
+        font-size: 24px;
+    }
+
+    .voice-command-btn i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-buttons {
+        gap: 8px;
+    }
+    
+    .btn-kiosk,
+    .btn-outline,
+    .btn-primary {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .logo h1 {
+        font-size: 22px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .mobile-auth {
+        padding: 15px;
+    }
+
+    .ambulance-btn {
+        bottom: 90px;
+        right: 15px;
+        width: 65px;
+        height: 65px;
+    }
+
+    .voice-command-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .ambulance-status,
+    .voice-status {
+        font-size: 9px;
+    }
+}

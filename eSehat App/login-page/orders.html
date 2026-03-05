@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Sehat Nabha - Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>e-Sehat Nabha</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="../login-page/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="../login-page/user-appointments.html" class="nav-link">Appointments</a>
+                <a href="../login-page/orders.html" class="nav-link active">Orders</a>
+                <div class="user-profile">
+                    <img id="userAvatar" src="https://ui-avatars.com/api/?name=User+Name&background=random" alt="User Profile">
+                    <span class="userName">User Name</span> <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="orders-container">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>Medicine Orders</h1>
+                    <p>Track your medicine orders and prescriptions</p>
+                </div>
+                <div class="date-section">
+                    <p id="currentDate"></p>
+                </div>
+            </div>
+
+            <!-- Tabs for Navigation -->
+            <div class="tabs-container">
+                <button class="tab-btn active" data-tab="order-medicine">Order Medicine</button>
+                <button class="tab-btn" data-tab="current-orders">Current Orders</button>
+                <button class="tab-btn" data-tab="order-history">Order History</button>
+                <!-<button class="tab-btn" data-tab="prescriptions">Prescriptions</button>
+            </div>
+
+            <!-- Order Medicine Section (New) -->
+            <section id="order-medicine" class="tab-content active">
+                <div class="order-medicine-section">
+                    <div class="order-medicine-header">
+                        <h2>Order Medicines</h2>
+                        <div class="medicine-search">
+                            <div class="search-container">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="medicineSearch" class="search-bar" placeholder="Search medicines...">
+                                <button class="search-btn" id="searchBtn">Search</button>
+                            </div>
+
+                            <select id="categoryFilter">
+                                <option value="">All Categories</option>
+                                <option value="pain-relief">Pain Relief</option>
+                                <option value="vitamins">Vitamins</option>
+                                <option value="cardiac">Cardiac</option>
+                                <option value="diabetes">Diabetes</option>
+                                <option value="antibiotic">Antibiotic</option>
+                            </select>
+
+                            <select id="sortFilter">
+                                <option value="popularity">Popularity</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Medicines Grid -->
+                    <div class="medicines-grid" id="medicinesGrid">
+                        <!-- JS will populate medicine cards here -->
+                    </div>
+
+                    <!-- Cart Summary -->
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Discount</span>
+                            <span id="discount">-₹0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">₹0.00</span>
+                        </div>
+
+                        <button class="checkout-btn" id="checkoutBtn" disabled>
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current Orders Section -->
+            <section id="current-orders" class="tab-content">
+                <div class="section-header">
+                    <h2>Your Active Orders</h2>
+                    <div class="filter-options">
+                        <select id="currentOrdersFilter">
+                            <option value="all">All Orders</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="out-for-delivery">Out for Delivery</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="orders-list" id="currentOrdersList">
+                    <!-- Order cards will be dynamically loaded here -->
+                    <div class="no-orders">
+                        <i class="fas fa-pills"></i>
+                        <p>No active orders found</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order History Section -->
+            <section id="order-history" class="tab-content">
+                <div class="section-header">
+                    <h2>Order History</h2>
+                    <div class="filter-options">
+                        <select id="historyFilter">
+                            <option value="all">All Orders</option>
+                            <option value="last-month">Last Month</option>
+                            <option value="last-3-months">Last 3 Months</option>
+                            <option value="last-6-months">Last 6 Months</option>
+                            <option value="last-year">Last Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="orders-list" id="orderHistoryList">
+                    <!-- Order history cards will be dynamically loaded here -->
+                    <div class="no-orders">
+                        <i class="fas fa-history"></i>
+                        <p>No order history found</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prescriptions Section -->
+            <section id="prescriptions" class="tab-content">
+                <div class="section-header">
+                    <h2>Your Prescriptions</h2>
+                    <button class="btn-primary" id="uploadPrescriptionBtn">
+                        <i class="fas fa-upload"></i> Upload Prescription
+                    </button>
+                </div>
+
+                <div class="orders-list">
+                    <!-- Prescription cards will be dynamically loaded here -->
+                    <div class="no-orders">
+                        <i class="fas fa-file-prescription"></i>
+                        <p>No prescriptions found</p>
+                        <button class="btn-primary" id="uploadFirstPrescriptionBtn">
+                            <i class="fas fa-upload"></i> Upload Your First Prescription
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Mobile Cart Panel -->
+    <div class="mobile-cart-panel" id="mobileCartPanel">
+        <div class="mobile-cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-mobile-cart" id="closeMobileCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-cart-items" id="mobileCartItems">
+            <!-- Mobile cart items will be populated here -->
+        </div>
+        <div class="mobile-cart-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="mobileSubtotal">₹0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Discount</span>
+                <span id="mobileDiscount">-₹0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="mobileTotal">₹0.00</span>
+            </div>
+            <button class="checkout-btn" id="mobileCheckoutBtn" disabled>
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tab-container">
+                    <button class="tab active" data-tab="delivery">Delivery</button>
+                    <button class="tab" data-tab="payment">Payment</button>
+                </div>
+                
+                <div id="deliveryTab" class="tab-content active">
+                    <h3>Delivery Address</h3>
+                    <div class="address-card selected">
+                        <h4>Home Address</h4>
+                        <p>123 Main Street, City, State 12345</p>
+                        <button class="select-address-btn">Selected</button>
+                    </div>
+                    <div class="address-card">
+                        <h4>Work Address</h4>
+                        <p>456 Office Blvd, Business District, State 67890</p>
+                        <button class="select-address-btn">Select</button>
+                    </div>
+                    
+                    <h3>Delivery Options</h3>
+                    <div class="delivery-option">
+                        <input type="radio" id="standardDelivery" name="deliveryOption" checked>
+                        <label for="standardDelivery">
+                            <strong>Standard Delivery</strong> (3-5 business days) - Free
+                        </label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="expressDelivery" name="deliveryOption">
+                        <label for="expressDelivery">
+                            <strong>Express Delivery</strong> (1-2 business days) - ₹50
+                        </label>
+                    </div>
+                    
+                    <div class="payment-summary">
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="checkoutSubtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Discount</span>
+                            <span id="checkoutDiscount">-₹0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Delivery Fee</span>
+                            <span id="deliveryFee">Free</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span id="checkoutTotal">₹0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary next-tab-btn" data-next="payment">Continue to Payment</button>
+                </div>
+                
+                <div id="paymentTab" class="tab-content">
+                    <h3>Payment Method</h3>
+                    <div class="delivery-option">
+                        <input type="radio" id="cardPayment" name="paymentMethod" checked>
+                        <label for="cardPayment">
+                            <strong>Credit/Debit Card</strong>
+                        </label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="upiPayment" name="paymentMethod">
+                        <label for="upiPayment">
+                            <strong>UPI Payment</strong>
+                        </label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="codPayment" name="paymentMethod">
+                        <label for="codPayment">
+                            <strong>Cash on Delivery</strong>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-summary">
+                        <div class="summary-line total">
+                            <span>Total Amount</span>
+                            <span id="paymentTotal">₹0.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="placeOrderBtn">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <div class="confirmation">
+                <i class="fas fa-check-circle"></i>
+                <h2>Order Placed Successfully!</h2>
+                <p>Your order has been placed and will be delivered soon.</p>
+                <p>Order ID: <strong id="orderId">#ORD-12345</strong></p>
+                <button class="btn-primary" id="continueShoppingBtn">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="orders.js"></script>
+</body>
+</html>
